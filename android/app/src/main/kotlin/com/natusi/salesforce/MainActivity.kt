@@ -1,0 +1,6 @@
+package com.natusi.salesforce
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}

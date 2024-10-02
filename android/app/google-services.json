@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "164383136747",
+    "firebase_url": "https://apk123-5a085-default-rtdb.firebaseio.com",
+    "project_id": "apk123-5a085",
+    "storage_bucket": "apk123-5a085.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164383136747:android:5c8bf0703489fbdc4317ae",
+        "android_client_info": {
+          "package_name": "com.example.aplikasipelaporan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOS4sVXDh_AalWa5EZNHN1co7vTpkpIDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164383136747:android:55d7ed40befdfbc34317ae",
+        "android_client_info": {
+          "package_name": "com.example.testing"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOS4sVXDh_AalWa5EZNHN1co7vTpkpIDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164383136747:android:61a5aa943f9b323d4317ae",
+        "android_client_info": {
+          "package_name": "com.natusi.salesforce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOS4sVXDh_AalWa5EZNHN1co7vTpkpIDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
