@@ -1,16 +1,81 @@
 # SALES FORCE NATUSI
 
-A new Flutter project.
+Sebuah proyek Flutter baru.
 
-## Getting Started
+## permulaan
 
-This project is a starting point for a Flutter application.
+Proyek ini adalah titik awal untuk aplikasi Flutter. Beberapa sumber daya untuk membantu Anda memulai jika ini adalah proyek Flutter pertama Anda:
 
-A few resources to get you started if this is your first Flutter project:
+- [Lab: Tulis aplikasi Flutter pertama Anda](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Contoh Flutter yang berguna](https://docs.flutter.dev/cookbook)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Untuk memulai bantuan pengembangan Flutter, lihat [dokumentasi bold](https://docs.flutter.dev/), yang menawarkan tutorial, contoh, panduan tentang pengembangan seluler, dan referensi API lengkap.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Gambar
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Contoh Gambar'),
+        ),
+        body: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/gambar1.png', 
+                  width: 150, 
+                  height: 100, 
+                  fit: BoxFit.cover,
+                ),
+                SizedBox(width: 10), 
+                Image.asset(
+                  'assets/images/gambar2.png', 
+                  width: 150,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+              ],
+            ),
+            SizedBox(height: 20), 
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/gambar3.png', 
+                  width: 150,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                SizedBox(width: 10), 
+                Image.asset(
+                  'assets/images/gambar5.png', 
+                  width: 150,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+              ],
+            ),
+            SizedBox(height: 20), 
+            Image.asset(
+                  'assets/images/gambar6.png', 
+                  width: 150,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+          ],
+        ),
+      ),
+    );
+  }
+}

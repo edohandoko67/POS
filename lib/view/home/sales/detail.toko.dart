@@ -24,7 +24,7 @@ class DetailToko extends StatelessWidget {
               fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white),
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.white,
           ),
@@ -42,7 +42,7 @@ class DetailToko extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 25),
                 child: Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey, width: 2.0),
                       borderRadius: BorderRadius.circular(4.0),
@@ -53,7 +53,7 @@ class DetailToko extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 5),
                 child: Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey, width: 2.0),
                       borderRadius: BorderRadius.circular(4.0),
@@ -64,7 +64,7 @@ class DetailToko extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 5),
                 child: Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey, width: 2.0),
                       borderRadius: BorderRadius.circular(4.0),
@@ -78,7 +78,7 @@ class DetailToko extends StatelessWidget {
                   children: [
                     Container(
                         width: screenWidth * 0.45,
-                        padding: EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(20.0),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey, width: 2.0),
                           borderRadius: BorderRadius.circular(4.0),
@@ -86,7 +86,7 @@ class DetailToko extends StatelessWidget {
                         child: Text(tokoModel.provinsi ?? '')),
                     Container(
                         width: screenWidth * 0.45,
-                        padding: EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(20.0),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey, width: 2.0),
                           borderRadius: BorderRadius.circular(4.0),
@@ -102,7 +102,7 @@ class DetailToko extends StatelessWidget {
                   children: [
                     Container(
                         width: screenWidth * 0.45,
-                        padding: EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(20.0),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey, width: 2.0),
                           borderRadius: BorderRadius.circular(4.0),
@@ -110,7 +110,7 @@ class DetailToko extends StatelessWidget {
                         child: Text(tokoModel.kecamatan ?? '')),
                     Container(
                         width: screenWidth * 0.45,
-                        padding: EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(20.0),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey, width: 2.0),
                           borderRadius: BorderRadius.circular(4.0),
@@ -123,7 +123,7 @@ class DetailToko extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 5),
                 child: Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey, width: 2.0),
                       borderRadius: BorderRadius.circular(4.0),
@@ -134,14 +134,14 @@ class DetailToko extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 5),
                 child: Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey, width: 2.0),
                       borderRadius: BorderRadius.circular(4.0),
                     ),
                     child: Text(tokoModel.number ?? '')),
               ),
-              SizedBox(height: 15,),
+              const SizedBox(height: 15,),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 70.0),
                 child: Row(
@@ -149,7 +149,7 @@ class DetailToko extends StatelessWidget {
                   children: [
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          minimumSize: Size(55, 40),
+                          minimumSize: const Size(55, 40),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
                             backgroundColor: const Color(0xFF3F8CE2)),
@@ -159,7 +159,7 @@ class DetailToko extends StatelessWidget {
                         child: Text('Informasi', style: GoogleFonts.poppins(fontSize: 12, color: Colors.white),)),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            minimumSize: Size(55, 40),
+                            minimumSize: const Size(55, 40),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
                             backgroundColor: const Color(0xFFDFA978)),
@@ -169,7 +169,7 @@ class DetailToko extends StatelessWidget {
                         child: Text('Lokasi', style: GoogleFonts.poppins(fontSize: 12, color: Colors.white),)),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            minimumSize: Size(55, 40),
+                            minimumSize: const Size(55, 40),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
                             backgroundColor: const Color(0xFF787878)),

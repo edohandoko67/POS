@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
-import 'package:salesforce/auth/model/stock.product.dart';
-import 'package:salesforce/auth/service/api.constant.dart';
 import 'package:salesforce/view/home/sales/controller/sales.controller.dart';
-import 'package:salesforce/widgets/date.dart';
 
 import '../../../../auth/model/tracking.dart';
 
@@ -51,33 +47,6 @@ class Pengiriman extends GetView<SalesController> {
                 fontSize: 18,
                 fontWeight: FontWeight.w500
               ),),
-              // const SizedBox(height: 10,),
-              // Text("Kurir", style: GoogleFonts.poppins(
-              //   fontWeight: FontWeight.w500,
-              //   fontSize: 14
-              // ),),
-              // Container(
-              //   height: 50,
-              //   decoration: BoxDecoration(
-              //       border: Border.all(color: Colors.grey),
-              //       borderRadius: BorderRadius.circular(5.0)
-              //   ),
-              //   child: Padding(
-              //     padding: const EdgeInsets.symmetric(horizontal: 8.0), //horizontal
-              //     child: DropdownButtonFormField(
-              //         // hint: const Text("Kurir"),
-              //         value: controller.idSalesController,
-              //         items: controller.listKurir
-              //             .map<DropdownMenuItem<int>>((item) {
-              //           return DropdownMenuItem<int>(
-              //               value: item.idSales,
-              //               child: Text(item.name ?? ""));
-              //         }).toList(),
-              //         onChanged: (newValue) {
-              //           controller.idSalesController = newValue;
-              //         }),
-              //   ),
-              // ),
               const SizedBox(height: 7,),
               Text("No Resi", style: GoogleFonts.poppins(
                 fontSize: 14,
@@ -86,7 +55,7 @@ class Pengiriman extends GetView<SalesController> {
               const SizedBox(height: 3,),
               TextField(
                 controller: controller.TextNoResi,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: ""
                 ),
@@ -127,7 +96,7 @@ class Pengiriman extends GetView<SalesController> {
                             const SizedBox(width: 5,),
                             Column(
                               children: [
-                                if (!event.checkData!) VerticalDivider(color: Colors.grey, thickness: 2),
+                                if (!event.checkData!) const VerticalDivider(color: Colors.grey, thickness: 2),
                                 Container(
                                   width: 20,
                                   height: 20,
@@ -136,7 +105,7 @@ class Pengiriman extends GetView<SalesController> {
                                     color: event.checkData! ? Colors.green : Colors.grey,
                                   ),
                                 ),
-                                if (!event.checkDataAfter!) VerticalDivider(color: Colors.grey, thickness: 2),
+                                if (!event.checkDataAfter!) const VerticalDivider(color: Colors.grey, thickness: 2),
                               ],
                             ),
                             const SizedBox(width: 10,),
@@ -151,24 +120,11 @@ class Pengiriman extends GetView<SalesController> {
                       },
                     );
                   } else {
-                    return Center(child: Text('No tracking data available.'));
+                    return const Center(child: Text('No tracking data available.'));
                   }
                 }),
               ),
 
-              // Expanded(
-              //   child: ListView.builder(
-              //       itemCount: events.length,
-              //       itemBuilder: (context, index) {
-              //         final event = events[index];
-              //         return TimelineTile(
-              //           date: event['date']!,
-              //           description: event['description']!,
-              //           isFirst: event['isFirst'] == 'true',
-              //           isLast: event['isLast'] == 'true',
-              //         );
-              //       }),
-              // )
         ]),
       ),
     ));
@@ -196,10 +152,10 @@ class TimelineTile extends StatelessWidget {
       child: Row(
         children: [
           Text(date.toString()),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Column(
             children: [
-              if (!isFirst!) VerticalDivider(color: Colors.grey, thickness: 2),
+              if (!isFirst!) const VerticalDivider(color: Colors.grey, thickness: 2),
               Container(
                 width: 20,
                 height: 20,
@@ -208,17 +164,11 @@ class TimelineTile extends StatelessWidget {
                   color: isFirst! ? Colors.red : Colors.grey,
                 ),
               ),
-              if (!isLast!) VerticalDivider(color: Colors.grey, thickness: 2),
+              if (!isLast!) const VerticalDivider(color: Colors.grey, thickness: 2),
             ],
           ),
-          SizedBox(width: 15),
+          const SizedBox(width: 15),
           Expanded(child: Text(description ?? '')),
-          // Expanded(
-          //   child: ListTile(
-          //     title: Text(date),
-          //     subtitle: Text(description),
-          //   ),
-          // ),
         ],
       ),
     );

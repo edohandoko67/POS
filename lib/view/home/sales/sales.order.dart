@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:salesforce/view/home/home.controller.dart';
 import 'package:salesforce/view/home/sales/controller/sales.controller.dart';
 import 'package:signature/signature.dart';
 
@@ -41,7 +40,7 @@ class SalesOrder extends GetView<SalesController> {
     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF3F8CE2),
+        backgroundColor: const Color(0xFF3F8CE2),
         title: Text(
           'Sales Order',
           style: GoogleFonts.poppins(
@@ -87,7 +86,7 @@ class SalesOrder extends GetView<SalesController> {
                     border: Border.all(color: Colors.grey, width: 2),
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child: TextField(
+                  child: const TextField(
                     decoration: InputDecoration(
                       labelText: 'No. SO*',
                       border: InputBorder.none,
@@ -112,7 +111,7 @@ class SalesOrder extends GetView<SalesController> {
                       suffixIcon: Icon(Icons.calendar_month),
                       contentPadding: EdgeInsets.all(16),
                     ),
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                     onTap: () async {
                       DateTime currentDate = DateTime.now();
                       DateTime? pickedDate = await showDatePicker(
@@ -138,8 +137,8 @@ class SalesOrder extends GetView<SalesController> {
                   children: [
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF3F8CE2),
-                            minimumSize: Size(40, 20),
+                            backgroundColor: const Color(0xFF3F8CE2),
+                            minimumSize: const Size(40, 20),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                         onPressed: () {
@@ -175,7 +174,7 @@ class SalesOrder extends GetView<SalesController> {
                                             borderRadius:
                                                 BorderRadius.circular(5),
                                           ),
-                                          child: TextField(
+                                          child: const TextField(
                                             decoration: InputDecoration(
                                               labelText: 'Produk*',
                                               border: InputBorder.none,
@@ -202,7 +201,7 @@ class SalesOrder extends GetView<SalesController> {
                                                 onChanged: (newValue) {
                                                   // controller.idSatuanKuantitas = newValue;
                                                 },
-                                                items: [],
+                                                items: const [],
                                                 decoration: InputDecoration(
                                                   //contentPadding: EdgeInsets.symmetric(horizontal: 12.0),
                                                   isDense: true,
@@ -236,7 +235,7 @@ class SalesOrder extends GetView<SalesController> {
                                                 borderRadius:
                                                     BorderRadius.circular(5),
                                               ),
-                                              child: TextField(
+                                              child: const TextField(
                                                 keyboardType:
                                                     TextInputType.number,
                                                 decoration: InputDecoration(
@@ -264,7 +263,7 @@ class SalesOrder extends GetView<SalesController> {
                                                 borderRadius:
                                                     BorderRadius.circular(5),
                                               ),
-                                              child: TextField(
+                                              child: const TextField(
                                                 keyboardType:
                                                     TextInputType.number,
                                                 decoration: InputDecoration(
@@ -288,7 +287,7 @@ class SalesOrder extends GetView<SalesController> {
                                                 borderRadius:
                                                     BorderRadius.circular(5),
                                               ),
-                                              child: TextField(
+                                              child: const TextField(
                                                 keyboardType:
                                                     TextInputType.number,
                                                 decoration: InputDecoration(
@@ -313,7 +312,7 @@ class SalesOrder extends GetView<SalesController> {
                                             borderRadius:
                                                 BorderRadius.circular(5),
                                           ),
-                                          child: TextField(
+                                          child: const TextField(
                                             decoration: InputDecoration(
                                               labelText: 'Keterangan Discount*',
                                               border: InputBorder.none,
@@ -334,7 +333,7 @@ class SalesOrder extends GetView<SalesController> {
                                               child: ElevatedButton(
                                                   style: ElevatedButton.styleFrom(
                                                       backgroundColor:
-                                                          Color(0xFF3F8CE2),
+                                                          const Color(0xFF3F8CE2),
                                                       shape:
                                                           RoundedRectangleBorder(
                                                               borderRadius:
@@ -454,7 +453,7 @@ class SalesOrder extends GetView<SalesController> {
                               ))),
                           DataCell(IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.delete),
+                            icon: const Icon(Icons.delete),
                           )),
                         ]);
                       },
@@ -504,17 +503,17 @@ class SalesOrder extends GetView<SalesController> {
                         onChanged: (newValue) {
                           // controller.idSatuanKuantitas = newValue;
                         },
-                        items: [],
+                        items: const [],
                         decoration: InputDecoration(
                           //contentPadding: EdgeInsets.symmetric(horizontal: 12.0),
                           isDense: true,
                           // Reduces the vertical size of the dropdown
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey),
+                            borderSide: const BorderSide(color: Colors.grey),
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.blue),
+                            borderSide: const BorderSide(color: Colors.blue),
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
@@ -527,7 +526,7 @@ class SalesOrder extends GetView<SalesController> {
                         border: Border.all(color: Colors.grey, width: 2),
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: TextField(
+                      child: const TextField(
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: 'Limit Kredit*',
@@ -541,7 +540,7 @@ class SalesOrder extends GetView<SalesController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Tanda Tangan'),
+                    const Text('Tanda Tangan'),
                     IconButton(
                         onPressed: () {
                           _controller.clear();
@@ -572,7 +571,7 @@ class SalesOrder extends GetView<SalesController> {
                   width: double.infinity,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF3F8CE2),
+                          backgroundColor: const Color(0xFF3F8CE2),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5))),
                       onPressed: () {
@@ -589,7 +588,7 @@ class SalesOrder extends GetView<SalesController> {
                                     return AnimatedSwitcher(
                                       duration: const Duration(seconds: 1),
                                       child: controller.checklist.value
-                                          ? Icon(
+                                          ? const Icon(
                                         Icons.check_circle,
                                         key: ValueKey('success'),
                                         color: Colors.green,

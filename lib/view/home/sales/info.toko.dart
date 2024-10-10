@@ -10,14 +10,14 @@ class InformasiToko extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF3F8CE2),
+        backgroundColor: const Color(0xFF3F8CE2),
         title: Text(
           'Informasi Toko',
           style: GoogleFonts.poppins(
               fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white),
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.white,
           ),

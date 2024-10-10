@@ -47,7 +47,7 @@ class _ForgotPasswordState extends State<ForgotPassword> with SingleTickerProvid
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF3F8CE2),
+        backgroundColor: const Color(0xFF3F8CE2),
         title: Text('Lupa Password', style: GoogleFonts.poppins(
             fontSize: 14,
             fontWeight: FontWeight.w700,

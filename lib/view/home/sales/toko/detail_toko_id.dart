@@ -15,7 +15,7 @@ class DetailTokoId extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF3F8CE2),
+        backgroundColor: const Color(0xFF3F8CE2),
         title: Text('Informasi Toko', style: GoogleFonts.poppins(
           fontSize: 15,
           color: Colors.white,

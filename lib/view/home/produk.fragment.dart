@@ -77,11 +77,7 @@ class ProductFragment extends GetView<HomeController> {
                               children: [
                                 Container(
                                   width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    // border: Border.all(
-                                    //   width: 2.0,
-                                    //   color: Colors.grey,
-                                    // ),
+                                  decoration: const BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: const BorderRadius.vertical(
                                       top: Radius.circular(
@@ -99,16 +95,12 @@ class ProductFragment extends GetView<HomeController> {
                                   child: Container(
                                     width: double.infinity,
                                     height: 75,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Colors.white, // Warna latar belakang
                                       borderRadius: const BorderRadius.vertical(
                                         bottom: Radius.circular(
                                             7.0), // Radius untuk sudut bawah
                                       ),
-                                      // border: Border.all(
-                                      //   width: 2.0,
-                                      //   color: Colors.grey,
-                                      // ),
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(7.0),

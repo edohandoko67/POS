@@ -33,7 +33,7 @@ class _ImageKeteranganState extends State<ImageKeterangan> {
               fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white),
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.white,
           ),
@@ -55,7 +55,7 @@ class _ImageKeteranganState extends State<ImageKeterangan> {
                       height: 350,
                       child: Image.file(File(widget.imagePath))),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Container(
@@ -66,7 +66,7 @@ class _ImageKeteranganState extends State<ImageKeterangan> {
                       borderRadius: BorderRadius.circular(4.0),
                     ),
                     child: Text('${position.latitude}, ${position.longitude}')),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Container(
@@ -78,7 +78,7 @@ class _ImageKeteranganState extends State<ImageKeterangan> {
                   ),
                   child: TextField(
                     controller: controller.keterangan,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Keterangan',
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.all(16),
@@ -86,7 +86,7 @@ class _ImageKeteranganState extends State<ImageKeterangan> {
                     //maxLines: null,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -108,16 +108,16 @@ class _ImageKeteranganState extends State<ImageKeterangan> {
                         },
                         child: Obx(() {
                           return AnimatedSwitcher(
-                            duration: Duration(milliseconds: 300),
+                            duration: const Duration(milliseconds: 300),
                             child: controller.checklist.value
                                 ? Row(
                                     children: [
-                                      Icon(
+                                      const Icon(
                                         Icons.check_circle,
                                         color: Colors.white,
                                         key: ValueKey('checked'),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 5,
                                       ),
                                       Text(
@@ -131,12 +131,12 @@ class _ImageKeteranganState extends State<ImageKeterangan> {
                                   )
                                 : Row(
                                     children: [
-                                      Icon(
+                                      const Icon(
                                         Icons.check_circle_outline,
                                         color: Colors.white,
                                         key: ValueKey('unchecked'),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 5,
                                       ),
                                       Text(

@@ -11,14 +11,14 @@ class PengaturanKeamanan extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF3F8CE2),
+        backgroundColor: const Color(0xFF3F8CE2),
         title: Text('Pengaturan Keamanan', style: GoogleFonts.poppins(
             fontSize: 14,
             fontWeight: FontWeight.w700,
             color: Colors.white
         ),),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white,),
+          icon: const Icon(Icons.arrow_back, color: Colors.white,),
           onPressed: () {
             Get.back();
           },
@@ -30,7 +30,7 @@ class PengaturanKeamanan extends GetView<HomeController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Password Lama'),
+              const Text('Password Lama'),
               CustomTextField(
                 hintText: '********',
                 obsecureText: controller.isObsecure.value,
@@ -44,8 +44,8 @@ class PengaturanKeamanan extends GetView<HomeController> {
                 },
               ),
               ),
-              SizedBox(height: 5,),
-              Text('Password Baru'),
+              const SizedBox(height: 5,),
+              const Text('Password Baru'),
               CustomTextField(
                 hintText: '********',
                 obsecureText: controller.isObsecureNew.value,
@@ -59,8 +59,8 @@ class PengaturanKeamanan extends GetView<HomeController> {
                 },
                 ),
               ),
-              SizedBox(height: 5,),
-              Text('Ulangi Password Baru'),
+              const SizedBox(height: 5,),
+              const Text('Ulangi Password Baru'),
               CustomTextField(
                 hintText: '********',
                 obsecureText: controller.isObsecureRepeat.value,
@@ -74,7 +74,7 @@ class PengaturanKeamanan extends GetView<HomeController> {
                 },
                 ),
               ),
-              SizedBox(height: 7,),
+              const SizedBox(height: 7,),
               SizedBox(
                 width: double.infinity,
                 height: 55,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:salesforce/view/home/home.controller.dart';
 import 'package:salesforce/view/home/sales/controller/sales.controller.dart';
 
 class UpdateToko extends GetView<SalesController> {
@@ -37,7 +36,7 @@ class UpdateToko extends GetView<SalesController> {
                   fontWeight: FontWeight.w400
                 ),),
                 const SizedBox(height: 10,),
-                TextField(
+                const TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Kode',
@@ -45,7 +44,7 @@ class UpdateToko extends GetView<SalesController> {
                   ),
                 ),
                 const SizedBox(height: 5,),
-                TextField(
+                const TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Nama Toko',
@@ -53,7 +52,7 @@ class UpdateToko extends GetView<SalesController> {
                   ),
                 ),
                 const SizedBox(height: 5,),
-                TextField(
+                const TextField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Alamat',
@@ -66,7 +65,7 @@ class UpdateToko extends GetView<SalesController> {
                   children: [
                     SizedBox(
                       width: screenWidth * 0.45,
-                      child: TextField(
+                      child: const TextField(
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'Provinsi',
@@ -76,7 +75,7 @@ class UpdateToko extends GetView<SalesController> {
                     ),
                     SizedBox(
                       width: screenWidth * 0.45,
-                      child: TextField(
+                      child: const TextField(
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'Kab/Kota',
@@ -92,7 +91,7 @@ class UpdateToko extends GetView<SalesController> {
                   children: [
                     SizedBox(
                       width: screenWidth * 0.45,
-                      child: TextField(
+                      child: const TextField(
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'Kecamatan',
@@ -102,7 +101,7 @@ class UpdateToko extends GetView<SalesController> {
                     ),
                     SizedBox(
                       width: screenWidth * 0.45,
-                      child: TextField(
+                      child: const TextField(
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'Desa',
@@ -113,7 +112,7 @@ class UpdateToko extends GetView<SalesController> {
                   ],
                 ),
                 const SizedBox(height: 5,),
-                TextField(
+                const TextField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Alamat Pengiriman',
@@ -121,7 +120,7 @@ class UpdateToko extends GetView<SalesController> {
                   ),
                 ),
                 const SizedBox(height: 5,),
-                TextField(
+                const TextField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Alamat Lain',
@@ -183,7 +182,7 @@ class UpdateToko extends GetView<SalesController> {
                   ],
                 ),
                 const SizedBox(height: 5,),
-                TextField(
+                const TextField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Nama Pemilik',
@@ -191,7 +190,7 @@ class UpdateToko extends GetView<SalesController> {
                   ),
                 ),
                 const SizedBox(height: 5,),
-                TextField(
+                const TextField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'No. KTP',
@@ -233,7 +232,7 @@ class UpdateToko extends GetView<SalesController> {
                   ),
                 ),
                 const SizedBox(height: 5,),
-                TextField(
+                const TextField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'No. HP',
@@ -260,7 +259,7 @@ class UpdateToko extends GetView<SalesController> {
                     ),
                     SizedBox(
                       width: screenWidth * 0.45,
-                      child: TextField(
+                      child: const TextField(
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'No. NPWP',
@@ -272,7 +271,7 @@ class UpdateToko extends GetView<SalesController> {
                   ],
                 ),
                 const SizedBox(height: 5,),
-                TextField(
+                const TextField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Nama NPWP',
@@ -280,7 +279,7 @@ class UpdateToko extends GetView<SalesController> {
                   ),
                 ),
                 const SizedBox(height: 5,),
-                TextField(
+                const TextField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Nama Pengiriman',
@@ -295,7 +294,7 @@ class UpdateToko extends GetView<SalesController> {
                     border: Border.all(color: Colors.grey, width: 2),
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child: TextField(
+                  child: const TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       labelText: 'Catatan',
@@ -318,12 +317,12 @@ class UpdateToko extends GetView<SalesController> {
                       child: DropdownButtonFormField<String>(
                         hint: const Text('TOP'),
                         onChanged: (newValue) {},
-                        items: [],
+                        items: const [],
                       ),
                     ),
                     SizedBox(
                       width: screenWidth * 0.45,
-                      child: TextField(
+                      child: const TextField(
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'Limit Kredit',
@@ -349,7 +348,7 @@ class UpdateToko extends GetView<SalesController> {
                       child: DropdownButtonFormField<String>(
                         hint: const Text('Grup Discount'),
                         onChanged: (newValue) {},
-                        items: [],
+                        items: const [],
                       ),
                     ),
                     Container(
@@ -363,7 +362,7 @@ class UpdateToko extends GetView<SalesController> {
                       child: DropdownButtonFormField<int>(
                         hint: const Text('Week / Minggu'),
                         onChanged: (newValue) {},
-                        items: [],
+                        items: const [],
                       ),
                     ),
                     const SizedBox(height: 5,),
@@ -381,13 +380,13 @@ class UpdateToko extends GetView<SalesController> {
                   child: DropdownButtonFormField<String>(
                     hint: const Text('Hari Kunjungan'),
                     onChanged: (newValue) {},
-                    items: [],
+                    items: const [],
                   ),
                 ),
                 const SizedBox(height: 10,),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF189EFF),
+                    backgroundColor: const Color(0xFF189EFF),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5)
                     ),

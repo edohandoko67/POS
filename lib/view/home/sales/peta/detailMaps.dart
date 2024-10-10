@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:salesforce/auth/model/toko.dart';
-import 'package:salesforce/routes/pages.dart';
 import 'package:salesforce/view/home/home.controller.dart';
-import 'package:salesforce/view/home/sales/toko/toko.dart';
 
 class DetailMaps extends GetView<HomeController> {
   const DetailMaps({super.key});
@@ -66,74 +64,6 @@ class DetailMaps extends GetView<HomeController> {
                         controller.onAreaSelected(newValue!);
                       },
                     )),
-                    // const SizedBox(height: 5,),
-                    // Text(
-                    //   "Schedule",
-                    //   style: GoogleFonts.poppins(
-                    //     fontSize: 16.0,
-                    //     fontWeight: FontWeight.bold,
-                    //     color: Colors.black, // Pastikan warna kontras
-                    //   ),
-                    // ),
-                    // const SizedBox(height: 3.0),
-                    // Text(
-                    //   'Senin, 26 Oktober 2025',
-                    //   style: GoogleFonts.poppins(
-                    //     fontSize: 16.0,
-                    //     color: Colors.black, // Pastikan warna kontras
-                    //   ),
-                    // ),
-                    // const SizedBox(height: 8.0),
-                    // Text(
-                    //   "Nama Toko",
-                    //   style: GoogleFonts.poppins(
-                    //     fontSize: 16.0,
-                    //     fontWeight: FontWeight.bold,
-                    //     color: Colors.black, // Pastikan warna kontras
-                    //   ),
-                    // ),
-                    // const SizedBox(height: 3.0),
-                    // Text(
-                    //   'TOKO SARJANA',
-                    //   style: GoogleFonts.poppins(
-                    //     fontSize: 16.0,
-                    //     color: Colors.black, // Pastikan warna kontras
-                    //   ),
-                    // ),
-                    // const SizedBox(height: 8.0),
-                    // Text(
-                    //   "Alamat Toko",
-                    //   style: GoogleFonts.poppins(
-                    //     fontSize: 16.0,
-                    //     fontWeight: FontWeight.bold,
-                    //     color: Colors.black, // Pastikan warna kontras
-                    //   ),
-                    // ),
-                    // const SizedBox(height: 3.0),
-                    // Text(
-                    //   'Jalan Merdeka No. 123, Kelurahan Harmoni, Kecamatan Sejahtera, Kota Bahagia, Kode Pos 12345',
-                    //   style: GoogleFonts.poppins(
-                    //     fontSize: 16.0,
-                    //     color: Colors.black, // Pastikan warna kontras
-                    //   ),
-                    // ),
-                    // const SizedBox(height: 8.0),
-                    // Text(
-                    //   "No. Telepon Toko",
-                    //   style: GoogleFonts.poppins(
-                    //     fontSize: 16.0,
-                    //     fontWeight: FontWeight.bold,
-                    //     color: Colors.black, // Pastikan warna kontras
-                    //   ),
-                    // ),
-                    // const SizedBox(height: 3.0),
-                    // Text(
-                    //   '+628645436807',
-                    //   style: GoogleFonts.poppins(
-                    //     fontSize: 16.0,
-                    //     color: Colors.black, // Pastikan warna kontras
-                    //   ),
-                    // ),
                   ],
                 ),
               ),

@@ -31,12 +31,12 @@ class PengaturanProfile extends GetView<LoginController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Nama Lengkap'),
+              const Text('Nama Lengkap'),
               CustomTextField(
                 hintText: controller.storage.getName(),
               ),
-              SizedBox(height: 10,),
-              Text('Jenis Kelamin'),
+              const SizedBox(height: 10,),
+              const Text('Jenis Kelamin'),
               Row(
                 children: [
                   Obx(() => Radio<String>(
@@ -57,11 +57,11 @@ class PengaturanProfile extends GetView<LoginController> {
                   const Text('Perempuan')
                 ],
               ),
-              Text('No. Telepon'),
+              const Text('No. Telepon'),
               CustomTextField(
                 hintText: controller.storage.getNumber(),
               ),
-              SizedBox(height: 7,),
+              const SizedBox(height: 7,),
               SizedBox(
                 width: double.infinity,
                 height: 55,

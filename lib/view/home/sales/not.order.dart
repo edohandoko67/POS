@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:salesforce/view/home/home.controller.dart';
 import 'package:salesforce/view/home/sales/controller/sales.controller.dart';
 import 'package:signature/signature.dart';
 
@@ -18,14 +17,14 @@ class NotOrder extends GetView<SalesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF3F8CE2),
+        backgroundColor: const Color(0xFF3F8CE2),
         title: Text(
           'Not Order',
           style: GoogleFonts.poppins(
               fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white),
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.white,
           ),
@@ -43,17 +42,17 @@ class NotOrder extends GetView<SalesController> {
               children: [
                 ListTile(
                   leading: Image.asset('assets/images/toko_jaya.png'),
-                  title: Text('TOKO SUKSES JAYA 1'),
-                  subtitle: Text(
+                  title: const Text('TOKO SUKSES JAYA 1'),
+                  subtitle: const Text(
                     'Jl. Pahlawan No. 10, Mojopurno, Kecamatan Magersari, Kota Mojokerto, Jawa Timur',
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 const Divider(color: Colors.black,),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 TextField(
@@ -85,11 +84,11 @@ class NotOrder extends GetView<SalesController> {
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
-                Text('Isi Keterangan'),
-                SizedBox(
+                const Text('Isi Keterangan'),
+                const SizedBox(
                   height: 5,
                 ),
                 Container(
@@ -99,25 +98,25 @@ class NotOrder extends GetView<SalesController> {
                     border: Border.all(color: Colors.grey, width: 2),
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child: TextField(
+                  child: const TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.all(16),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Tanda Tangan'),
+                    const Text('Tanda Tangan'),
                     IconButton(
                         onPressed: () {
                           _controller.clear();
                         },
-                        icon: Icon(Icons.delete, color: Color(0xFF869C00),))
+                        icon: const Icon(Icons.delete, color: Color(0xFF869C00),))
                   ],
                 ),
                 Container(
@@ -134,7 +133,7 @@ class NotOrder extends GetView<SalesController> {
                     backgroundColor: Colors.white,
                   ),
                 ),
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 SizedBox(
                   width: double.infinity,
                   height: 45,
@@ -151,7 +150,7 @@ class NotOrder extends GetView<SalesController> {
                         style: GoogleFonts.poppins(color: Colors.white),
                       )),
                 ),
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
               ],
             ),
           ),

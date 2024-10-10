@@ -21,11 +21,6 @@ class DetailStock extends GetView<SalesController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF3F8CE2),
-        // title: Text('Stock', style: GoogleFonts.poppins(
-        //     fontSize: 14,
-        //     fontWeight: FontWeight.w700,
-        //     color: Colors.white
-        // ),),
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
@@ -125,7 +120,7 @@ class DetailStock extends GetView<SalesController> {
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
-                        textStyle: TextStyle(fontSize: 18),
+                        textStyle: const TextStyle(fontSize: 18),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(0))),
                     child: const Icon(
@@ -142,7 +137,7 @@ class DetailStock extends GetView<SalesController> {
                     style: ElevatedButton.styleFrom(
                         // padding: EdgeInsets.symmetric(vertical: 15),
                         backgroundColor: const Color(0xFF3F8CE2),
-                        textStyle: TextStyle(fontSize: 18),
+                        textStyle: const TextStyle(fontSize: 18),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(0))),
                     child: Text(
@@ -171,7 +166,7 @@ class DetailStock extends GetView<SalesController> {
         ),
         context: context,
         builder: (BuildContext ctx) {
-          return Container(
+          return SizedBox(
             width: double.infinity,
             height: 500,
             child: Stack(children: [
@@ -256,7 +251,7 @@ class DetailStock extends GetView<SalesController> {
                     const SizedBox(
                       height: 15,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Expanded(
                       child: Obx(
                         () => GridView.builder(
@@ -301,7 +296,7 @@ class DetailStock extends GetView<SalesController> {
                                     fontWeight: FontWeight.normal,
                                     fontSize: 15
                                   ),),
-                                  Text("Stock : ")
+                                  const Text("Stock : ")
                                 ],
                               ),
                             );

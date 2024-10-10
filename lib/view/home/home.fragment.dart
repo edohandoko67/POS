@@ -1,11 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'package:salesforce/auth/model/toko.dart';
-import 'package:salesforce/auth/model/tracking.dart';
 import 'package:salesforce/auth/service/api.constant.dart';
 import 'package:salesforce/view/home/home.controller.dart';
 import 'package:salesforce/view/home/sales/controller/sales.controller.dart';
@@ -115,15 +110,15 @@ class HomePageFragment extends GetView<HomeController> {
                             fontWeight: FontWeight.w400,
                             color: Colors.white),
                       ),
-                      AnimatedSwitcher(duration: Duration(seconds: 1),
+                      AnimatedSwitcher(duration: const Duration(seconds: 1),
                         child: controller.checklist.value
-                            ? Icon(
+                            ? const Icon(
                           Icons.wb_sunny,
                           key: ValueKey('awakeIcon'),
                           size: 30,
                           color: Colors.yellow,
                         )
-                            : Icon(
+                            : const Icon(
                           Icons.nightlight_round,
                           key: ValueKey('sleepIcon'),
                           size: 30,
@@ -200,7 +195,7 @@ class HomePageFragment extends GetView<HomeController> {
                                                       style: ElevatedButton
                                                           .styleFrom(
                                                         minimumSize:
-                                                            Size(100, 45),
+                                                            const Size(100, 45),
                                                         backgroundColor:
                                                             const Color(
                                                                 0xFF3C65F6),
@@ -237,7 +232,7 @@ class HomePageFragment extends GetView<HomeController> {
                                                       style: ElevatedButton
                                                           .styleFrom(
                                                         minimumSize:
-                                                            Size(100, 45),
+                                                            const Size(100, 45),
                                                         backgroundColor:
                                                             Colors.grey,
                                                         shape:
@@ -556,7 +551,7 @@ class HomePageFragment extends GetView<HomeController> {
                                               builder: (context) {
                                                 return AlertDialog(
                                                   content: SingleChildScrollView(
-                                                    child: Container(
+                                                    child: SizedBox(
                                                       width: 200,
                                                       // Sesuaikan dengan lebar yang diinginkan
                                                       height: 300,

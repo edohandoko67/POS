@@ -5,7 +5,6 @@ import 'dart:async';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:salesforce/auth/model/absen.toko.model.dart';
@@ -44,7 +43,7 @@ class SalesController extends GetxController {
   int? idSatuanProduct;
   RxBool isLoading = true.obs;
 
-  Rx<LatLng> officeLocation = LatLng(-7.482151427258845, 112.44826629209244).obs;
+  Rx<LatLng> officeLocation = const LatLng(-7.482151427258845, 112.44826629209244).obs;
   Rx<AbsenTokoModel> absenToko = AbsenTokoModel().obs;
   int? idSalesController;
 
@@ -53,11 +52,9 @@ class SalesController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    //listProductBarang();
     listSatuan();
     fecthAllKurir();
     fecthDataTracking();
-    //listStock();
     fetchAllProducts();
     double? latitude = (absenToko.value.latitude ?? 0).toDouble();
     double? longitude = (absenToko.value.longitude ?? 0).toDouble();
@@ -103,23 +100,6 @@ class SalesController extends GetxController {
       'stock': '10'
     },
   ];
-
-  // final RxList<StockProduct> products = <StockProduct>[
-  //   // StockProduct(
-  //   //   idProduct: 1,
-  //   //   productName: 'Red',
-  //   //   imageProduct: 'https://via.placeholder.com/150/FF0000/FFFFFF?text=Red',
-  //   //   jumlahStock: 10,
-  //   //   price: 100,
-  //   // ),
-  //   // StockProduct(
-  //   //   idProduct: 2,
-  //   //   productName: 'Green',
-  //   //   imageProduct: 'https://via.placeholder.com/150/00FF00/FFFFFF?text=Green',
-  //   //   jumlahStock: 10,
-  //   //   price: 100,
-  //   // ),
-  // ].obs;
 
   var selectedProduct = Rx<ImageDetailStock?>(null);
 

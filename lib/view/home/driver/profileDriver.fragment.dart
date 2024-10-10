@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:salesforce/view/home/driver/controller/home.driver.controller.dart';
-import 'package:salesforce/view/home/driver/homeDriver.fragment.dart';
-import 'package:salesforce/view/home/home.controller.dart';
 import 'package:salesforce/view/login/login.controller.dart';
 
 import '../../../routes/pages.dart';
@@ -285,7 +283,7 @@ class ProfileDriverFragment extends GetView<HomeDriverController> {
                                           ElevatedButton(
                                               style: ElevatedButton.styleFrom(
                                                   backgroundColor: const Color(0xFF3C65F6),
-                                                  minimumSize: Size(100, 40),
+                                                  minimumSize: const Size(100, 40),
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius: BorderRadius.circular(5)
                                                   )
@@ -299,7 +297,7 @@ class ProfileDriverFragment extends GetView<HomeDriverController> {
                                           ElevatedButton(
                                               style: ElevatedButton.styleFrom(
                                                   backgroundColor: const Color(0xFF758AA3),
-                                                  minimumSize: Size(100, 40),
+                                                  minimumSize: const Size(100, 40),
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius: BorderRadius.circular(5)
                                                   )

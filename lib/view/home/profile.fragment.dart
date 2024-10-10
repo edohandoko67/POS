@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:salesforce/view/home/home.controller.dart';
 import 'package:salesforce/view/login/login.controller.dart';
-import 'package:salesforce/view/login/login.dart';
 
 import '../../routes/pages.dart';
 

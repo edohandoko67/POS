@@ -9,14 +9,14 @@ class PusatBantuan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF3F8CE2),
+        backgroundColor: const Color(0xFF3F8CE2),
         title: Text('Pusat Bantuan', style: GoogleFonts.poppins(
           fontWeight: FontWeight.w700,
           fontSize: 14,
           color: Colors.white
         ),),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white,),
+          icon: const Icon(Icons.arrow_back, color: Colors.white,),
           onPressed: () {
             Get.back();
           },
@@ -33,19 +33,19 @@ class PusatBantuan extends StatelessWidget {
                   fontSize: 13,
                   fontWeight: FontWeight.w700
                 ),),
-                SizedBox(height: 7,),
+                const SizedBox(height: 7,),
                 Text('Selamat datang di Pusat Bantuan Aplikasi! Kami di sini untuk membantu Anda.'
                     'Temukan jawaban atas pertanyaan Anda dan panduan untuk memaksimalkan penggunaan aplikasi ini.',
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w400,
                   fontSize: 10
                 ),),
-                SizedBox(height: 7,),
+                const SizedBox(height: 7,),
                 Text('1. Pertanyaan Umum (FAQ)', style: GoogleFonts.poppins(
                     fontSize: 13,
                     fontWeight: FontWeight.w700
                 ),),
-                SizedBox(height: 7,),
+                const SizedBox(height: 7,),
                 Text('- Bagaimana cara masuk ke aplikasi? Untuk masuk, masukkan nama pengguna dan kata sandi Anda di layar login.'
                     'Jika Anda lupa kata sandi, gunakan opsi Lupa Kata Sandi untuk meresetnya.',
                   style: GoogleFonts.poppins(
@@ -62,12 +62,12 @@ class PusatBantuan extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       fontSize: 10
                   ),),
-                SizedBox(height: 7,),
+                const SizedBox(height: 7,),
                 Text('2. Panduan Penggunaan', style: GoogleFonts.poppins(
                     fontSize: 13,
                     fontWeight: FontWeight.w700
                 ),),
-                SizedBox(height: 7,),
+                const SizedBox(height: 7,),
                 Text('- Modul Absensi Sales dan Driver. Lihat panduan untuk mencatat kehadiran dan jam kerja Anda dengan tepat.',
                   style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w400,
@@ -88,12 +88,12 @@ class PusatBantuan extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       fontSize: 10
                   ),),
-                SizedBox(height: 7,),
+                const SizedBox(height: 7,),
                 Text('3. Tips dan Trik', style: GoogleFonts.poppins(
                     fontSize: 13,
                     fontWeight: FontWeight.w700
                 ),),
-                SizedBox(height: 7,),
+                const SizedBox(height: 7,),
                 Text('- Optimalkan Penggunaan Aplikasi. Ikuti tips ini untuk menggunakan aplikasi dengan lebih efisien dan produktif.',
                   style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w400,
@@ -104,12 +104,12 @@ class PusatBantuan extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       fontSize: 10
                   ),),
-                SizedBox(height: 7,),
+                const SizedBox(height: 7,),
                 Text('4. Solusi Masalah Teknis', style: GoogleFonts.poppins(
                     fontSize: 13,
                     fontWeight: FontWeight.w700
                 ),),
-                SizedBox(height: 7,),
+                const SizedBox(height: 7,),
                 Text('- Aplikasi Tidak Bisa Dibuka. Pastikan perangkat Anda terhubung ke internet dan coba restart aplikasi. Jika masalah berlanjut, hubungi dukungan teknis kami.',
                   style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w400,
@@ -121,12 +121,12 @@ class PusatBantuan extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       fontSize: 10
                   ),),
-                SizedBox(height: 7,),
+                const SizedBox(height: 7,),
                 Text('5. Hubungi Kami', style: GoogleFonts.poppins(
                     fontSize: 13,
                     fontWeight: FontWeight.w700
                 ),),
-                SizedBox(height: 7,),
+                const SizedBox(height: 7,),
                 Text('Jika Anda membutuhkan bantuan lebih lanjut atau memiliki pertanyaan yang tidak terjawab di sini, silakan hubungi tim dukungan kami:'
                     '\nEmail: support@perusahaan.com'
                     '\nTelepon: +62-XXX-XXXX-XXXX'
@@ -135,12 +135,12 @@ class PusatBantuan extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       fontSize: 10
                   ),),
-                SizedBox(height: 7,),
+                const SizedBox(height: 7,),
                 Text('6. Feedback dan Saran', style: GoogleFonts.poppins(
                     fontSize: 13,
                     fontWeight: FontWeight.w700
                 ),),
-                SizedBox(height: 7,),
+                const SizedBox(height: 7,),
                 Text('Kami selalu berusaha untuk meningkatkan layanan kami. Jika Anda memiliki feedback atau saran,'
                     'silakan kirimkan melalui email atau formulir feedback di aplikasi.',
                   style: GoogleFonts.poppins(

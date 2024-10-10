@@ -82,15 +82,15 @@ class HomeDriverFragment extends GetView<HomeDriverController> {
                             fontWeight: FontWeight.w400,
                             color: Colors.white),
                       ),
-                      AnimatedSwitcher(duration: Duration(seconds: 1),
+                      AnimatedSwitcher(duration: const Duration(seconds: 1),
                         child: controller.checklist.value
-                            ? Icon(
+                            ? const Icon(
                           Icons.wb_sunny,
                           key: ValueKey('awakeIcon'),
                           size: 30,
                           color: Colors.yellow,
                         )
-                            : Icon(
+                            : const Icon(
                           Icons.nightlight_round,
                           key: ValueKey('sleepIcon'),
                           size: 30,
@@ -167,7 +167,7 @@ class HomeDriverFragment extends GetView<HomeDriverController> {
                                                   style: ElevatedButton
                                                       .styleFrom(
                                                     minimumSize:
-                                                    Size(100, 45),
+                                                    const Size(100, 45),
                                                     backgroundColor:
                                                     const Color(
                                                         0xFF3C65F6),
@@ -179,10 +179,6 @@ class HomeDriverFragment extends GetView<HomeDriverController> {
                                                     ),
                                                   ),
                                                   onPressed: () {
-                                                    // if (!isChecklist) {
-                                                    //   controller.checklist.value = !controller.checklist.value;
-                                                    // }
-                                                    // Get.back();
 
                                                     if (controller.checklist.value) {
                                                       controller.checklist.value = false;
@@ -204,7 +200,7 @@ class HomeDriverFragment extends GetView<HomeDriverController> {
                                                   style: ElevatedButton
                                                       .styleFrom(
                                                     minimumSize:
-                                                    Size(100, 45),
+                                                    const Size(100, 45),
                                                     backgroundColor:
                                                     Colors.grey,
                                                     shape:
@@ -449,7 +445,7 @@ class HomeDriverFragment extends GetView<HomeDriverController> {
                                         builder: (context) {
                                           return AlertDialog(
                                             content: SingleChildScrollView(
-                                              child: Container(
+                                              child: SizedBox(
                                                 width: 200,
                                                 // Sesuaikan dengan lebar yang diinginkan
                                                 height: 300,

@@ -47,12 +47,12 @@ class Cart extends GetView<SalesController> {
                       final item = controller.cartList[index];
                       return Card(
                         elevation: 3.0, // Memberikan efek bayangan pada card
-                        margin: EdgeInsets.all(8.0), // Margin antara card
+                        margin: const EdgeInsets.all(8.0), // Margin antara card
                         child: ListTile(
-                          contentPadding: EdgeInsets.all(16.0),
+                          contentPadding: const EdgeInsets.all(16.0),
                           // Padding dalam card
                           leading: Image.network(
-                            "${ApiConstant.baseUrl + item.image.toString()}",
+                            ApiConstant.baseUrl + item.image.toString(),
                             fit: BoxFit
                                 .cover, // Menjaga gambar tetap sesuai dengan ukuran
                           ),

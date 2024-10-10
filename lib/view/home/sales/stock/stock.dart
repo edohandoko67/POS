@@ -108,17 +108,13 @@ class StockProduct extends GetView<SalesController> {
                                 Container(
                                   width: double.infinity,
                                   decoration: const BoxDecoration(
-                                    // border: Border.all(
-                                    //   width: 2.0,
-                                    //   color: Colors.grey,
-                                    // ),
                                     color: Colors.white,
                                     borderRadius: BorderRadius.vertical(
                                       top: Radius.circular(10.0), // Radius untuk sudut atas
                                     ),
                                   ),
                                   clipBehavior: Clip.hardEdge, // Memastikan gambar terpotong sesuai radius
-                                  child: Container(
+                                  child: SizedBox(
                                     width: screenWidth * 0.4,
                                     height: screenHeight * 0.2,
                                     child: Image.network(

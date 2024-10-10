@@ -28,9 +28,9 @@ class MessageUser extends GetView<HomeController> {
                   final item = controller.messageList[index];
                   return Card(
                     elevation: 3.0, // Memberikan efek bayangan pada card
-                    margin: EdgeInsets.all(8.0), // Margin antara card
+                    margin: const EdgeInsets.all(8.0), // Margin antara card
                     child: ListTile(
-                      contentPadding: EdgeInsets.all(16.0),
+                      contentPadding: const EdgeInsets.all(16.0),
                       title: Text(
                         "${item.judulText}",
                         style: const TextStyle(

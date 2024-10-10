@@ -21,9 +21,9 @@ class Maps extends GetView<SalesController> {
           ),
           markers: {
             Marker(
-              markerId: MarkerId('Toko 1'),
+              markerId: const MarkerId('Toko 1'),
               position: controller.officeLocation.value,
-              infoWindow: InfoWindow(title: 'Toko 1 Location'),
+              infoWindow: const InfoWindow(title: 'Toko 1 Location'),
               icon: BitmapDescriptor.defaultMarker,
             )
           },

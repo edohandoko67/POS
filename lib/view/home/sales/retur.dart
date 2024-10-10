@@ -1,9 +1,7 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:salesforce/view/home/home.controller.dart';
 import 'package:salesforce/view/home/sales/controller/sales.controller.dart';
 import 'package:signature/signature.dart';
 
@@ -38,7 +36,7 @@ class ReturOrder extends GetView<SalesController> {
     final screenWidth = MediaQuery.of(context).size.width;
     return Obx(() => Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF3F8CE2),
+        backgroundColor: const Color(0xFF3F8CE2),
         title: Text('Retur', style: GoogleFonts.poppins(
           fontSize: 14,
           fontWeight: FontWeight.w700,
@@ -60,17 +58,17 @@ class ReturOrder extends GetView<SalesController> {
               children: [
                 ListTile(
                   leading: Image.asset('assets/images/toko_jaya.png'),
-                  title: Text('TOKO SUKSES JAYA 1'),
-                  subtitle: Text(
+                  title: const Text('TOKO SUKSES JAYA 1'),
+                  subtitle: const Text(
                     'Jl. Pahlawan No. 10, Mojopurno, Kecamatan Magersari, Kota Mojokerto, Jawa Timur',
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 const Divider(color: Colors.black,),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -80,7 +78,7 @@ class ReturOrder extends GetView<SalesController> {
                     border: Border.all(color: Colors.grey, width: 2),
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child: TextField(
+                  child: const TextField(
                     decoration: InputDecoration(
                       labelText: 'No. SO*',
                       border: InputBorder.none,
@@ -88,7 +86,7 @@ class ReturOrder extends GetView<SalesController> {
                     ),
                   ),
                 ),
-                SizedBox(height: 5,),
+                const SizedBox(height: 5,),
                 Container(
                   width: double.infinity,
                   height: 50,
@@ -105,7 +103,7 @@ class ReturOrder extends GetView<SalesController> {
                       suffixIcon: Icon(Icons.calendar_month),
                       contentPadding: EdgeInsets.all(16),
                     ),
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                     onTap: () async {
                       DateTime currentDate = DateTime.now();
                       DateTime? pickedDate = await showDatePicker(
@@ -124,7 +122,7 @@ class ReturOrder extends GetView<SalesController> {
                     },
                   ),
                 ),
-                SizedBox(height: 5,),
+                const SizedBox(height: 5,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -155,7 +153,7 @@ class ReturOrder extends GetView<SalesController> {
                                                 fontSize: 14),
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         Container(
@@ -169,7 +167,7 @@ class ReturOrder extends GetView<SalesController> {
                                           ),
                                           child: TextField(
                                             controller: controller.nameProduct,
-                                            decoration: InputDecoration(
+                                            decoration: const InputDecoration(
                                               hintText: 'Product*',
                                               border: InputBorder.none,
                                               contentPadding:
@@ -177,7 +175,7 @@ class ReturOrder extends GetView<SalesController> {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 5,
                                         ),
                                         Row(
@@ -207,7 +205,7 @@ class ReturOrder extends GetView<SalesController> {
                                                   // Reduces the vertical size of the dropdown
                                                   enabledBorder:
                                                   OutlineInputBorder(
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                         color: Colors.grey),
                                                     borderRadius:
                                                     BorderRadius.circular(
@@ -215,7 +213,7 @@ class ReturOrder extends GetView<SalesController> {
                                                   ),
                                                   focusedBorder:
                                                   OutlineInputBorder(
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                         color: Colors.blue),
                                                     borderRadius:
                                                     BorderRadius.circular(
@@ -238,7 +236,7 @@ class ReturOrder extends GetView<SalesController> {
                                                 controller: controller.priceProduct,
                                                 keyboardType:
                                                 TextInputType.number,
-                                                decoration: InputDecoration(
+                                                decoration: const InputDecoration(
                                                   hintText: 'Harga Retail*',
                                                   border: InputBorder.none,
                                                   contentPadding:
@@ -248,7 +246,7 @@ class ReturOrder extends GetView<SalesController> {
                                             )
                                           ],
                                         ),
-                                        SizedBox(height: 5),
+                                        const SizedBox(height: 5),
                                         Row(
                                           mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -267,7 +265,7 @@ class ReturOrder extends GetView<SalesController> {
                                                 controller: controller.quantityProduct,
                                                 keyboardType:
                                                 TextInputType.number,
-                                                decoration: InputDecoration(
+                                                decoration: const InputDecoration(
                                                   hintText: 'QTY Produk*',
                                                   border: InputBorder.none,
                                                   contentPadding:
@@ -275,7 +273,7 @@ class ReturOrder extends GetView<SalesController> {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 7,
                                             ),
                                             Container(
@@ -292,7 +290,7 @@ class ReturOrder extends GetView<SalesController> {
                                                 controller: controller.discountProduct,
                                                 keyboardType:
                                                 TextInputType.number,
-                                                decoration: InputDecoration(
+                                                decoration: const InputDecoration(
                                                   hintText: 'Discount(%)*',
                                                   border: InputBorder.none,
                                                   contentPadding:
@@ -302,7 +300,7 @@ class ReturOrder extends GetView<SalesController> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 5,
                                         ),
                                         Container(
@@ -316,7 +314,7 @@ class ReturOrder extends GetView<SalesController> {
                                           ),
                                           child: TextField(
                                             controller: controller.alasanProduct,
-                                            decoration: InputDecoration(
+                                            decoration: const InputDecoration(
                                               hintText: 'Alasan Retur*',
                                               border: InputBorder.none,
                                               contentPadding:
@@ -324,7 +322,7 @@ class ReturOrder extends GetView<SalesController> {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 25,
                                         ),
                                         Row(
@@ -336,7 +334,7 @@ class ReturOrder extends GetView<SalesController> {
                                               child: ElevatedButton(
                                                   style: ElevatedButton.styleFrom(
                                                       backgroundColor:
-                                                      Color(0xFF3F8CE2),
+                                                      const Color(0xFF3F8CE2),
                                                       shape:
                                                       RoundedRectangleBorder(
                                                           borderRadius:
@@ -381,14 +379,14 @@ class ReturOrder extends GetView<SalesController> {
                                 );
                               });
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.add,
                           color: Colors.white,
                         )),
-                    Text('List Retur')
+                    const Text('List Retur')
                   ],
                 ),
-                SizedBox(height: 5,),
+                const SizedBox(height: 5,),
                 DataTable(
                     columnSpacing: 40,
                     columns: [
@@ -424,7 +422,7 @@ class ReturOrder extends GetView<SalesController> {
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Text(item.alasan ?? '', style: GoogleFonts.poppins(fontSize: 14)),
-                                        SizedBox(height: 25,),
+                                        const SizedBox(height: 25,),
                                         ElevatedButton(
                                           style: ElevatedButton.styleFrom(
                                             backgroundColor: Colors.grey,
@@ -449,8 +447,8 @@ class ReturOrder extends GetView<SalesController> {
                             Get.defaultDialog(
                               barrierDismissible: true,
                               title: 'Konfirmasi Hapus',
-                              content: Padding(
-                                padding: const EdgeInsets.all(10.0),
+                              content: const Padding(
+                                padding: EdgeInsets.all(10.0),
                                 child: Text('Apakah Anda yakin ingin menghapus data ini?'),
                               ),
                               confirm: TextButton(
@@ -472,7 +470,7 @@ class ReturOrder extends GetView<SalesController> {
                               ),
                             );
                           },
-                          icon: Icon(Icons.delete),
+                          icon: const Icon(Icons.delete),
                         )),
                       ]);
                 })),
@@ -484,7 +482,7 @@ class ReturOrder extends GetView<SalesController> {
                           fontSize: 10, fontWeight: FontWeight.w700),
                     ),
                   ),
-                  DataColumn(
+                  const DataColumn(
                     label: Text(''),
                   ),
                   DataColumn(
@@ -494,19 +492,19 @@ class ReturOrder extends GetView<SalesController> {
                           fontSize: 10, fontWeight: FontWeight.w700),
                     ),
                   ),
-                  DataColumn(
+                  const DataColumn(
                     label: Text(''),
                   ),
-                  DataColumn(
+                  const DataColumn(
                     label: Text(''),
                   ),
-                  DataColumn(
+                  const DataColumn(
                     label: Text(''),
                   ),
-                  DataColumn(
+                  const DataColumn(
                     label: Text(''),
                   ),
-                ], rows: [
+                ], rows: const [
                   DataRow(cells: [
                     DataCell(Text('')),
                     DataCell(Text('')),
@@ -520,7 +518,7 @@ class ReturOrder extends GetView<SalesController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Tanda Tangan'),
+                    const Text('Tanda Tangan'),
                     IconButton(
                         onPressed: () {
                           _controller.clear();
@@ -541,7 +539,7 @@ class ReturOrder extends GetView<SalesController> {
                     backgroundColor: Colors.white,
                   ),
                 ),
-                SizedBox(height: 50,),
+                const SizedBox(height: 50,),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(

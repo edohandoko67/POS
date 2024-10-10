@@ -44,14 +44,14 @@ class Piutang extends GetView<SalesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF3F8CE2),
+        backgroundColor: const Color(0xFF3F8CE2),
         title: Text('Piutang', style: GoogleFonts.poppins(
           fontWeight: FontWeight.w700,
           fontSize: 14,
           color: Colors.white
         ),),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white,),
+          icon: const Icon(Icons.arrow_back, color: Colors.white,),
           onPressed: () {
             Get.back();
           },
@@ -66,17 +66,17 @@ class Piutang extends GetView<SalesController> {
               children: [
                 ListTile(
                   leading: Image.asset('assets/images/toko_jaya.png'),
-                  title: Text('TOKO SUKSES JAYA 1'),
-                  subtitle: Text(
+                  title: const Text('TOKO SUKSES JAYA 1'),
+                  subtitle: const Text(
                     'Jl. Pahlawan No. 10, Mojopurno, Kecamatan Magersari, Kota Mojokerto, Jawa Timur',
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 const Divider(color: Colors.black,),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text('Data Piutang', style: GoogleFonts.poppins(),),
@@ -100,7 +100,7 @@ class Piutang extends GetView<SalesController> {
                   ]);
                 })),
                 DataTable(columnSpacing: 25, columns: [
-                  DataColumn(
+                  const DataColumn(
                     label: Text(''),
                   ),
                   DataColumn(
@@ -137,7 +137,7 @@ class Piutang extends GetView<SalesController> {
                       style: GoogleFonts.poppins(
                           fontSize: 10, fontWeight: FontWeight.w700, color: Colors.red),),
                   ),
-                ], rows: [
+                ], rows: const [
                   DataRow(cells: [
                     DataCell(Text('')),
                     DataCell(Text('')),
@@ -148,7 +148,7 @@ class Piutang extends GetView<SalesController> {
                     DataCell(Text('')),
                   ])
                 ]),
-                Text('Riwayat Transaksi Bayar'),
+                const Text('Riwayat Transaksi Bayar'),
                 DataTable(
                     columnSpacing: 10,
                     columns: [
@@ -168,7 +168,7 @@ class Piutang extends GetView<SalesController> {
                         DataCell(Text(item['utang'], style: GoogleFonts.poppins(fontSize: 10, color: Colors.red),)),
                       ]);
                     })),
-                SizedBox(height: 30,),
+                const SizedBox(height: 30,),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
