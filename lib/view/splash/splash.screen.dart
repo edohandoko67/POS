@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:salesforce/view/login/login.dart';
 
-import '../../auth/utils/storage.dart';
+import '../../utils/storage.dart';
 import '../../routes/pages.dart';
 
 class SplashScreen extends StatefulWidget {

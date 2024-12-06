@@ -16,7 +16,7 @@ import 'package:salesforce/auth/model/product.model.dart';
 import 'package:salesforce/auth/model/satuan.product.dart';
 import 'package:salesforce/auth/model/stock.product.dart';
 import 'package:salesforce/auth/service/auth.service.dart';
-import 'package:salesforce/auth/utils/storage.dart';
+import 'package:salesforce/utils/storage.dart';
 import 'package:salesforce/view/home/sales/image.keterangan.dart';
 import '../../../../auth/model/tracking.dart';
 

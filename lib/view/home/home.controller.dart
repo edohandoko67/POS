@@ -10,7 +10,7 @@ import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:salesforce/auth/model/login.model.dart';
 import 'package:salesforce/auth/model/toko.dart';
 import 'package:salesforce/auth/service/auth.service.dart';
-import 'package:salesforce/auth/utils/storage.dart';
+import 'package:salesforce/utils/storage.dart';
 import 'package:salesforce/view/home/home.fragment.dart';
 import 'package:salesforce/view/home/sales/image.keterangan.dart';
 

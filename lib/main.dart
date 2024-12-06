@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:salesforce/res/getx_localization/languages.dart';
 import 'package:salesforce/routes/pages.dart';
 import 'package:salesforce/view/home/home.controller.dart';
 
@@ -49,8 +50,10 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      translations: Languages(),
+      fallbackLocale: Locale("en", "US"),
       supportedLocales: const [
-        Locale("id", "")
+        Locale("ur", "PK")
       ],
       theme: ThemeData(
         primarySwatch: Colors.green,

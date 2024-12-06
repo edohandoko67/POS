@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:salesforce/auth/service/auth.service.dart';
 import '../../../../auth/model/toko.dart';
-import '../../../../auth/utils/storage.dart';
+import '../../../../utils/storage.dart';
 
 class HomeDriverBindings implements Bindings {
   @override

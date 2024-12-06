@@ -19,7 +19,7 @@ import 'api.constant.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' hide MultipartFile;
 
-import '../utils/storage.dart';
+import '../../utils/storage.dart';
 class AuthService {
   HttpClient httpClient = HttpClient(baseUrl: ApiConstant.baseUrl);
   HttpClient httpClient2 = HttpClient(baseUrl: ApiConstant.baseUrl);

@@ -4,7 +4,7 @@ import 'package:dio_cache_interceptor_hive_store/dio_cache_interceptor_hive_stor
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import '../utils/log.dart';
-import '../utils/storage.dart';
+import '../../utils/storage.dart';
 import 'cache.provider.dart';
 
 class HttpClient {
