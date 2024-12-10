@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:salesforce/repository/repository.dart';
 // import 'package:salesforce/auth/model/absen.toko.model.dart';
 // import 'package:salesforce/auth/model/cart.dart';
 // import 'package:salesforce/auth/model/image_detail_stock.dart';
@@ -18,12 +19,17 @@ import 'package:image_picker/image_picker.dart';
 // import 'package:salesforce/auth/service/auth.service.dart';
 import 'package:salesforce/utils/storage.dart';
 import 'package:salesforce/view/home/sales/image.keterangan.dart';
+
+import '../../../../model/Product.dart';
+import '../../../../model/StockProduct.dart';
+import '../../../../model/Tracking.dart';
+import '../../../../utils/utils.dart';
 // import '../../../../auth/model/tracking.dart';
 
 
 class SalesController extends GetxController {
   Completer<GoogleMapController> mapController = Completer();
-  // AuthService service = AuthService();
+  Repository repository = Repository();
   TextEditingController date = TextEditingController();
   Storage storage = Storage();
   TextEditingController nameProduct = TextEditingController();
@@ -172,15 +178,11 @@ class SalesController extends GetxController {
     // print(position);
   }
 
-  // RxList<Product> listBarang = <Product>[].obs;
+  RxList<Product> listBarang = <Product>[].obs;
   // Future<void> listProductBarang() async {
   //   try {
   //     isLoading.value = true;
-  //     listBarang.value = await service.listProduct(
-  //         {
-  //           "" : ""
-  //         }
-  //     );
+  //     listBarang.value = await repository.listProduct();
   //   } catch (e) {
   //     print(e);
   //   } finally {
@@ -258,24 +260,24 @@ class SalesController extends GetxController {
   // //   }
   // // }
   //
-  // var allStockProducts = <StockProduct>[].obs; // asli
-  // var filteredStockProducts = <StockProduct>[].obs; //setelah di filter
-  //
-  // void fetchAllProducts() async {
-  //   try {
-  //     var products = await service.fetchStockProducts();
-  //     allStockProducts.assignAll(products);
-  //     filteredStockProducts.assignAll(products);
-  //   } catch (e) {
-  //     print("Error in fetchAllProducts: $e");
-  //   }
-  // }
-  //
-  // void searchProducts(String query) {
-  //   filteredStockProducts.value = allStockProducts
-  //       .where((product) => product.productName!.toLowerCase().contains(query.toLowerCase()))
-  //       .toList();
-  // }
+  var allStockProducts = <StockProduct>[].obs; // Using RxList
+  var filteredStockProducts = <StockProduct>[].obs; // Using RxList
+
+  void fetchAllProducts() async {
+    try {
+      var products = await repository.fetchStockProducts();
+      allStockProducts.assignAll(products); // Assign products to allStockProducts
+      filteredStockProducts.assignAll(products); // Assign products to filteredStockProducts
+    } catch (e) {
+      print("Error in fetchAllProducts: $e");
+    }
+  }
+
+  void searchProducts(String query) {
+    filteredStockProducts.value = allStockProducts
+        .where((product) => product.productName!.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+  }
   //
   // RxList<JadwalSales> listKurir = <JadwalSales>[].obs;
   // void fecthAllKurir() async {
@@ -284,37 +286,42 @@ class SalesController extends GetxController {
   //   });
   // }
   //
-  // Rx<Tracking> trackingBarang = Tracking().obs;
-  // RxList<Tracking> trackingProduct = <Tracking>[].obs;
+  Rx<Tracking> trackingBarang = Tracking().obs;
+  RxList<Tracking> trackingProduct = <Tracking>[].obs;
   // void fecthDataTracking() async {
   //   trackingProduct.value = await service.listTrackingProduct({
   //     "" : ""
   //   });
   // }
-  //
-  // RxBool isTrackingVisibility = false.obs;
-  // Future<void> trackingKurir() async {
-  //   try {
-  //     Tracking? result = await service.trackingProduct({
-  //       "noResi": TextNoResi.text
-  //     });
-  //     if (result != null) {
-  //       trackingProduct.value = [result];
-  //       isTrackingVisibility.value = true;
-  //       print("Tracking berhasil!");
-  //     } else {
-  //       trackingProduct.value = [];
-  //       isTrackingVisibility.value = false;
-  //       print("Tracking gagal!");
-  //     }
-  //   } catch (e, stackTrace) {
-  //     print("Terjadi kesalahan: $e");
-  //     print("Terjadi kesalahan: $stackTrace");
-  //     trackingProduct.value = [];
-  //     isTrackingVisibility.value = false;
-  //   }
-  // }
-  //
+
+  RxBool isTrackingVisibility = false.obs;
+  Future<void> trackingKurir() async {
+    try {
+      Map data = {
+        "noResi": TextNoResi.text
+      };
+      repository.trackingProduct(data).then((value) {
+        if (value != null) {
+          trackingProduct.value = [value];  // Assign result to trackingProduct
+          isTrackingVisibility.value = true; // Make tracking visible
+          print("Tracking berhasil!"); // Log successful tracking
+        } else {
+          trackingProduct.value = [];  // Clear tracking data if result is null
+          isTrackingVisibility.value = false; // Hide tracking info
+          print("Tracking gagal!"); // Log failed tracking
+        }
+      }).onError((error, stackTrace) {
+        Utils.snackBar('error', error.toString());
+      });
+    } catch (e, stackTrace) {
+      print("Terjadi kesalahan: $e");
+      print("StackTrace: $stackTrace");
+      trackingProduct.value = [];  // Clear list in case of error
+      isTrackingVisibility.value = false; // Hide tracking info on error
+    }
+  }
+
+//
   // RxList<ImageDetailStock> listDetailStock = <ImageDetailStock>[].obs;
   // Future<void> fetchDetailImage() async {
   //   try {

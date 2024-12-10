@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:salesforce/remote/api/api_endpoints.dart';
 import 'package:salesforce/routes/pages.dart';
 import 'package:salesforce/view/home/home.controller.dart';
 import 'package:flutter/material.dart';
@@ -38,61 +39,57 @@ class Toko extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Expanded(
-          child: Obx(() {
-            if (controller.isLoading.value) {
-              return shimmerLoading();
-            } else {
-              return Container();
-            }
-            // else if (controller.listToko.isEmpty) {
-            //   return Center(
-            //     child: Text(
-            //       'No items in the cart',
-            //       style: GoogleFonts.poppins(
-            //         fontSize: 18,
-            //         color: Colors.grey,
-            //       ),
-            //     ),
-            //   );
-            // } else {
-            //   return ListView.builder(
-            //     shrinkWrap: true,
-            //     itemCount: controller.listToko.length,
-            //     itemBuilder: (context, index) {
-            //       final item = controller.listToko[index];
-            //       return InkWell(
-            //         onTap: () {
-            //           Get.toNamed(Routes.DETAILTOKOBYID, arguments: item);
-            //         },
-            //         child: ListTile(
-            //           leading: SizedBox(
-            //               width: 50,
-            //               height: 50,
-            //               child: Image.network(
-            //                 (ApiConstant.baseUrl + item.image.toString()),
-            //                 fit: BoxFit.cover,
-            //               )),
-            //           title: Text(
-            //             item.nameToko ?? '',
-            //             style: GoogleFonts.poppins(
-            //                 fontSize: 12,
-            //                 fontWeight: FontWeight.w600),
-            //           ),
-            //           subtitle:
-            //           Text(
-            //             '${item.address ?? ''} ${item.kota ?? ''} ${item.provinsi ?? ''}', maxLines: 2,
-            //             // Batasi jumlah baris maksimum
-            //             overflow: TextOverflow.ellipsis,
-            //           ),
-            //         ),
-            //       );
-            //     },
-            //   );
-            // }
-          }),
-        ),
-      ),
+        child: Obx(() {
+      if (controller.isLoading.value) {
+        return shimmerLoading();
+      } else if (controller.listToko.isEmpty) {
+        return Center(
+          child: Text(
+            'No items in the cart', // Pesan ketika tidak ada data
+            style: GoogleFonts.poppins(
+              fontSize: 18,
+              color: Colors.grey,
+            ),
+          ),
+        );
+      } else {
+        return ListView.builder(
+          shrinkWrap: true, // Untuk mencegah ListView memakan ruang yang tidak diperlukan
+          itemCount: controller.listToko.length,
+          itemBuilder: (context, index) {
+            final item = controller.listToko[index];
+            return InkWell(
+              onTap: () {
+                Get.toNamed(Routes.DETAILTOKOBYID, arguments: item);
+              },
+              child: ListTile(
+                leading: SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: Image.network(
+                    ApiEndPoints.baseUrl + item.image.toString(),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                title: Text(
+                  item.nameToko ?? '',
+                  style: GoogleFonts.poppins(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                subtitle: Text(
+                  '${item.address ?? ''} ${item.kota ?? ''} ${item.provinsi ?? ''}',
+                  maxLines: 2, // Batasi jumlah baris maksimum
+                  overflow: TextOverflow.ellipsis, // Menampilkan elipsis jika teks terlalu panjang
+                ),
+              ),
+            );
+          },
+        );
+      }
+    }),
+    ),
     );
   }
 }
