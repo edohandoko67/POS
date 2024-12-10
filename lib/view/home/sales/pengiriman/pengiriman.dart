@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:salesforce/view/home/sales/controller/sales.controller.dart';
 
-import '../../../../auth/model/tracking.dart';
+// import '../../../../auth/model/tracking.dart';
 
 class Pengiriman extends GetView<SalesController> {
   Pengiriman({super.key});
@@ -19,9 +19,9 @@ class Pengiriman extends GetView<SalesController> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    String formattedDate = controller.trackingBarang.value.date != null
-        ? Tracking.dateFormat.format(controller.trackingBarang.value.date!)
-        : 'No Date';
+    // String formattedDate = controller.trackingBarang.value.date != null
+    //     ? Tracking.dateFormat.format(controller.trackingBarang.value.date!)
+    //     : 'No Date';
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF3F8CE2),
@@ -69,7 +69,7 @@ class Pengiriman extends GetView<SalesController> {
                   )
                 ),
                   onPressed: () {
-                    controller.trackingKurir();
+                  //  controller.trackingKurir();
                   },
                   child: Text("Cek Resi",
                     style: GoogleFonts.poppins(
@@ -77,53 +77,53 @@ class Pengiriman extends GetView<SalesController> {
                       color: Colors.white
                     ),)),
               const SizedBox(height: 10,),
-              Expanded(
-                child: Obx(() {
-                  // Control the visibility based on isTrackingVisible
-                  if (controller.isTrackingVisibility.value) {
-                    return ListView.builder(
-                      itemCount: controller.trackingProduct.length,
-                      itemBuilder: (context, index) {
-                        final event = controller.trackingProduct[index];
-                        String formattedDate = event.date != null
-                            ? Tracking.dateFormat.format(event.date!)
-                            : 'No Date';
-                        return Row(
-                          children: [
-                            SizedBox(
-                                width: 100,
-                                child: Text(formattedDate, style: GoogleFonts.poppins(fontSize: 13),)),
-                            const SizedBox(width: 5,),
-                            Column(
-                              children: [
-                                if (!event.checkData!) const VerticalDivider(color: Colors.grey, thickness: 2),
-                                Container(
-                                  width: 20,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: event.checkData! ? Colors.green : Colors.grey,
-                                  ),
-                                ),
-                                if (!event.checkDataAfter!) const VerticalDivider(color: Colors.grey, thickness: 2),
-                              ],
-                            ),
-                            const SizedBox(width: 10,),
-                            Expanded(
-                              flex: 1,
-                              child: SizedBox(
-                                  width: screenWidth * 0.6,
-                                  child: Text(event.status ?? '')),
-                            )
-                          ],
-                        );
-                      },
-                    );
-                  } else {
-                    return const Center(child: Text('No tracking data available.'));
-                  }
-                }),
-              ),
+              // Expanded(
+              //   child: Obx(() {
+              //     // Control the visibility based on isTrackingVisible
+              //     if (controller.isTrackingVisibility.value) {
+              //       return ListView.builder(
+              //         itemCount: controller.trackingProduct.length,
+              //         itemBuilder: (context, index) {
+              //           final event = controller.trackingProduct[index];
+              //           // String formattedDate = event.date != null
+              //           //     ? Tracking.dateFormat.format(event.date!)
+              //           //     : 'No Date';
+              //           return Row(
+              //             children: [
+              //               // SizedBox(
+              //               //     width: 100,
+              //               //     child: Text(formattedDate, style: GoogleFonts.poppins(fontSize: 13),)),
+              //               const SizedBox(width: 5,),
+              //               Column(
+              //                 children: [
+              //                   if (!event.checkData!) const VerticalDivider(color: Colors.grey, thickness: 2),
+              //                   Container(
+              //                     width: 20,
+              //                     height: 20,
+              //                     decoration: BoxDecoration(
+              //                       shape: BoxShape.circle,
+              //                       color: event.checkData! ? Colors.green : Colors.grey,
+              //                     ),
+              //                   ),
+              //                   if (!event.checkDataAfter!) const VerticalDivider(color: Colors.grey, thickness: 2),
+              //                 ],
+              //               ),
+              //               const SizedBox(width: 10,),
+              //               Expanded(
+              //                 flex: 1,
+              //                 child: SizedBox(
+              //                     width: screenWidth * 0.6,
+              //                     child: Text(event.status ?? '')),
+              //               )
+              //             ],
+              //           );
+              //         },
+              //       );
+              //     } else {
+              //       return const Center(child: Text('No tracking data available.'));
+              //     }
+              //   }),
+              // ),
 
         ]),
       ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:salesforce/auth/model/toko.dart';
+// import 'package:salesforce/auth/model/toko.dart';
 import 'package:salesforce/view/home/home.controller.dart';
 
 class DetailMaps extends GetView<HomeController> {
@@ -47,23 +47,23 @@ class DetailMaps extends GetView<HomeController> {
                       fontWeight: FontWeight.normal,
                       color: Colors.black, // Pastikan warna kontras
                     ),),
-                    Obx(() => DropdownMenu<TokoModel>(
-                      width: double.infinity,
-                      dropdownMenuEntries: controller.listToko.map((TokoModel userArea) {
-                        return DropdownMenuEntry<TokoModel>(
-                          value: userArea,
-                          label: userArea.nameToko ?? 'Lokasi Absensi',
-                          labelWidget: Text(
-                            userArea.nameToko ?? 'Lokasi Absensi',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        );
-                      }).toList(),
-                      onSelected: (TokoModel? newValue) {
-                        controller.onAreaSelected(newValue!);
-                      },
-                    )),
+                    // Obx(() => DropdownMenu<TokoModel>(
+                    //   width: double.infinity,
+                    //   dropdownMenuEntries: controller.listToko.map((TokoModel userArea) {
+                    //     return DropdownMenuEntry<TokoModel>(
+                    //       value: userArea,
+                    //       label: userArea.nameToko ?? 'Lokasi Absensi',
+                    //       labelWidget: Text(
+                    //         userArea.nameToko ?? 'Lokasi Absensi',
+                    //         maxLines: 1,
+                    //         overflow: TextOverflow.ellipsis,
+                    //       ),
+                    //     );
+                    //   }).toList(),
+                    //   onSelected: (TokoModel? newValue) {
+                    //     controller.onAreaSelected(newValue!);
+                    //   },
+                    // )),
                   ],
                 ),
               ),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:salesforce/auth/service/api.constant.dart';
+// import 'package:salesforce/auth/service/api.constant.dart';
 import 'package:salesforce/view/home/home.controller.dart';
 
-import '../../../../auth/model/toko.dart';
+// import '../../../../auth/model/toko.dart';
 
 class DetailTokoId extends GetView<HomeController> {
   DetailTokoId({super.key});
 
-  final TokoModel args = Get.arguments;
+ // final TokoModel args = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class DetailTokoId extends GetView<HomeController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.network((ApiConstant.baseUrl + args.image_detail.toString())),
+              //  Image.network((ApiConstant.baseUrl + args.image_detail.toString())),
                 const SizedBox(height: 5,),
                 Text(
                   "Nama Toko",
@@ -48,13 +48,13 @@ class DetailTokoId extends GetView<HomeController> {
                   ),
                 ),
                 const SizedBox(height: 3.0),
-                Text(
-                  args.nameToko ?? '',
-                  style: GoogleFonts.poppins(
-                    fontSize: 16.0,
-                    color: Colors.black, // Pastikan warna kontras
-                  ),
-                ),
+                // Text(
+                //   args.nameToko ?? '',
+                //   style: GoogleFonts.poppins(
+                //     fontSize: 16.0,
+                //     color: Colors.black, // Pastikan warna kontras
+                //   ),
+                // ),
                 const SizedBox(height: 8.0),
                 Text(
                   "Alamat Toko",
@@ -65,13 +65,13 @@ class DetailTokoId extends GetView<HomeController> {
                   ),
                 ),
                 const SizedBox(height: 3.0),
-                Text(
-                  args.address ?? '',
-                  style: GoogleFonts.poppins(
-                    fontSize: 16.0,
-                    color: Colors.black, // Pastikan warna kontras
-                  ),
-                ),
+                // Text(
+                //   args.address ?? '',
+                //   style: GoogleFonts.poppins(
+                //     fontSize: 16.0,
+                //     color: Colors.black, // Pastikan warna kontras
+                //   ),
+                // ),
                 const SizedBox(height: 8.0),
                 Text(
                   "No. Telepon Toko",
@@ -82,13 +82,13 @@ class DetailTokoId extends GetView<HomeController> {
                   ),
                 ),
                 const SizedBox(height: 3.0),
-                Text(
-                  args.number ?? '',
-                  style: GoogleFonts.poppins(
-                    fontSize: 16.0,
-                    color: Colors.black, // Pastikan warna kontras
-                  ),
-                ),
+                // Text(
+                //   args.number ?? '',
+                //   style: GoogleFonts.poppins(
+                //     fontSize: 16.0,
+                //     color: Colors.black, // Pastikan warna kontras
+                //   ),
+                // ),
               ],
             ),
           )),

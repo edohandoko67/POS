@@ -91,7 +91,7 @@ void setupOneSignal() {
       print("Notification data: $data");
       try {
         final controller = Get.find<HomeController>(); // Mengambil instance controller
-        controller.handleNotificationReceived(data);
+      //  controller.handleNotificationReceived(data);
       } catch (e) {
         print('Error handling notification: $e');
       }
@@ -107,7 +107,7 @@ void setupOneSignal() {
       // Menangani notifikasi ( misalnya, navigasi ke layar tertentu)
       try {
         final controller = Get.find<HomeController>(); // Mengambil instance controller
-        controller.handleNotificationReceived(data);
+       // controller.handleNotificationReceived(data);
       } catch (e) {
         print('Error handling notification: $e');
       }

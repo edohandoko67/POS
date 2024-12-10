@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:salesforce/auth/service/api.constant.dart';
+// import 'package:salesforce/auth/service/api.constant.dart';
 import 'package:salesforce/view/home/home.controller.dart';
 import 'package:salesforce/view/home/sales/controller/sales.controller.dart';
 
@@ -82,7 +82,7 @@ class HomePageFragment extends GetView<HomeController> {
                         ? Icon(Icons.message, color: Colors.red[300],)
                         : const Icon(Icons.message, color: Colors.white,),
                         onPressed: () {
-                          controller.notificationMessage();
+                         //controller.notificationMessage();
                           Get.toNamed(Routes.NOTIFIKASI);
                         },
                       )
@@ -303,7 +303,7 @@ class HomePageFragment extends GetView<HomeController> {
                                 ignoring: !controller.checklist.value,
                                 child: GestureDetector(
                                   onTap: () {
-                                    controller.getDataToko();
+                                    //controller.getDataToko();
                                     controller.resetCompleter();
                                     Get.toNamed(Routes.DETAILMAPSTOKO);
                                   },
@@ -327,7 +327,7 @@ class HomePageFragment extends GetView<HomeController> {
                                 ignoring: !controller.checklist.value,
                                 child: GestureDetector(
                                   onTap: () {
-                                    controller.getDataToko();
+                                   // controller.getDataToko();
                                     Get.toNamed(Routes.TOKO);
                                   },
                                   child: Column(
@@ -346,43 +346,43 @@ class HomePageFragment extends GetView<HomeController> {
                                   ),
                                 ),
                               ),
-                              IgnorePointer(
-                                ignoring: !controller.checklist.value,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    if (controller.checklist.value) {
-                                      salesController.listProductBarang();
-                                      salesController.fetchDetailImage();
-                                      Get.toNamed(Routes.STOCK);
-                                    } else {
-                                      // Get.snackbar(
-                                      //     "Status Sedang Istirahat",
-                                      //     "Anda sedang offline mohon aktifkan status untuk bekerja",
-                                      //     backgroundColor: Colors.green,
-                                      //     colorText: Colors.white,
-                                      //     duration: const Duration(seconds: 2), // Durasi popup
-                                      //     animationDuration: const Duration(milliseconds: 800));
-                                    }
-                                  },
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      controller.checklist.value
-                                          ? Image.asset('assets/icons/stok.png')
-                                          : Image.asset('assets/icons/stok_istirahat.png'),
-                                      const SizedBox(height: 4),
-                                      // Memberi jarak antara ikon dan teks
-                                      const Text(
-                                        'Stok',
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors
-                                                .black), // Sesuaikan gaya teks
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
+                              // IgnorePointer(
+                              //   ignoring: !controller.checklist.value,
+                              //   child: GestureDetector(
+                              //     onTap: () {
+                              //       if (controller.checklist.value) {
+                              //         salesController.listProductBarang();
+                              //         salesController.fetchDetailImage();
+                              //         Get.toNamed(Routes.STOCK);
+                              //       } else {
+                              //         // Get.snackbar(
+                              //         //     "Status Sedang Istirahat",
+                              //         //     "Anda sedang offline mohon aktifkan status untuk bekerja",
+                              //         //     backgroundColor: Colors.green,
+                              //         //     colorText: Colors.white,
+                              //         //     duration: const Duration(seconds: 2), // Durasi popup
+                              //         //     animationDuration: const Duration(milliseconds: 800));
+                              //       }
+                              //     },
+                              //     child: Column(
+                              //       mainAxisSize: MainAxisSize.min,
+                              //       children: [
+                              //         controller.checklist.value
+                              //             ? Image.asset('assets/icons/stok.png')
+                              //             : Image.asset('assets/icons/stok_istirahat.png'),
+                              //         const SizedBox(height: 4),
+                              //         // Memberi jarak antara ikon dan teks
+                              //         const Text(
+                              //           'Stok',
+                              //           style: TextStyle(
+                              //               fontSize: 12,
+                              //               color: Colors
+                              //                   .black), // Sesuaikan gaya teks
+                              //         ),
+                              //       ],
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -507,234 +507,234 @@ class HomePageFragment extends GetView<HomeController> {
                                 fontSize: 15, fontWeight: FontWeight.w500),
                           ),
                           const SizedBox(height: 10),
-                          SizedBox(
-                            height: 200,
-                            child: Obx(() {
-                              if (controller.listToko.isEmpty) {
-                                return Center(
-                                  child: Text("No schedule now", style: GoogleFonts.poppins(),),
-                                );
-                              } else {
-                                return ListView.builder(
-                                  itemCount: controller.listToko.length,
-                                  itemBuilder: (context, index) {
-                                    final item = controller.listToko[index];
-                                    return ListTile(
-                                      leading: SizedBox(
-                                          width: 50,
-                                          height: 50,
-                                          child: Image.network(
-                                            (ApiConstant.baseUrl + item.image.toString()),
-                                            fit: BoxFit.cover,
-                                          )),
-                                      title: Text(
-                                        item.nameToko ?? '',
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                      subtitle:
-                                      Text(
-                                        '${item.address ?? ''} ${item.kota ?? ''} ${item.provinsi ?? ''}', maxLines: 2,
-                                        // Batasi jumlah baris maksimum
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      trailing: IgnorePointer(
-                                        ignoring: !controller.checklist.value,
-                                        child: IconButton(
-                                          icon: controller.checklist.value
-                                              ? Image.asset('assets/icons/node.png')
-                                              : Image.asset('assets/icons/node_istirahat.png'),
-                                          onPressed: () {
-                                            showDialog(
-                                              context: context,
-                                              builder: (context) {
-                                                return AlertDialog(
-                                                  content: SingleChildScrollView(
-                                                    child: SizedBox(
-                                                      width: 200,
-                                                      // Sesuaikan dengan lebar yang diinginkan
-                                                      height: 300,
-                                                      // Sesuaikan dengan tinggi yang diinginkan
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                        MainAxisSize.min,
-                                                        // Menyesuaikan tinggi konten dengan isi
-                                                        children: [
-                                                          Row(
-                                                            children: [
-                                                              IconButton(
-                                                                onPressed: () {
-                                                                  controller.getImageFromCamera();
-                                                                },
-                                                                icon: Image.asset(
-                                                                    'assets/icons/absen_toko.png'),
-                                                              ),
-                                                              InkWell(
-                                                                onTap: () {
-                                                                  controller.getImageFromCamera();
-                                                                },
-                                                                child: Text(
-                                                                  'Absen Toko',
-                                                                  style: GoogleFonts
-                                                                      .poppins(
-                                                                    fontSize: 12,
-                                                                    fontWeight:
-                                                                    FontWeight.w500,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              IconButton(
-                                                                onPressed: () {
-                                                                  Get.toNamed(Routes.DETAILTOKO, arguments: item);
-                                                                },
-                                                                icon: Image.asset(
-                                                                    'assets/icons/detail_toko.png'),
-                                                              ),
-                                                              InkWell(
-                                                                onTap: () {
-                                                                  Get.toNamed(Routes.DETAILTOKO, arguments: item);
-                                                                },
-                                                                child: Text(
-                                                                  'Detail Toko',
-                                                                  style: GoogleFonts
-                                                                      .poppins(
-                                                                    fontSize: 12,
-                                                                    fontWeight:
-                                                                    FontWeight.w500,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              IconButton(
-                                                                onPressed: () {
-                                                                  Get.toNamed(Routes
-                                                                      .SALESORDER);
-                                                                },
-                                                                icon: Image.asset(
-                                                                    'assets/icons/sales_order.png'),
-                                                              ),
-                                                              InkWell(
-                                                                onTap: () {
-                                                                  Get.toNamed(Routes
-                                                                      .SALESORDER);
-                                                                },
-                                                                child: Text(
-                                                                  'Sales Order',
-                                                                  style: GoogleFonts
-                                                                      .poppins(
-                                                                    fontSize: 12,
-                                                                    fontWeight:
-                                                                    FontWeight.w500,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              IconButton(
-                                                                onPressed: () {
-                                                                  Get.toNamed(Routes
-                                                                      .NOTORDER);
-                                                                },
-                                                                icon: Image.asset(
-                                                                    'assets/icons/not_order.png'),
-                                                              ),
-                                                              InkWell(
-                                                                onTap: () {
-                                                                  Get.toNamed(Routes
-                                                                      .NOTORDER);
-                                                                },
-                                                                child: Text(
-                                                                  'Not Order',
-                                                                  style: GoogleFonts
-                                                                      .poppins(
-                                                                    fontSize: 12,
-                                                                    fontWeight:
-                                                                    FontWeight.w500,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              IconButton(
-                                                                onPressed: () {
-                                                                  Get.toNamed(
-                                                                      Routes.RETUR);
-                                                                },
-                                                                icon: Image.asset(
-                                                                    'assets/icons/return.png'),
-                                                              ),
-                                                              InkWell(
-                                                                onTap: () {
-                                                                  Get.toNamed(
-                                                                      Routes.RETUR);
-                                                                },
-                                                                child: Text(
-                                                                  'Retur',
-                                                                  style: GoogleFonts
-                                                                      .poppins(
-                                                                    fontSize: 12,
-                                                                    fontWeight:
-                                                                    FontWeight.w500,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              IconButton(
-                                                                onPressed: () {
-                                                                  Get.toNamed(
-                                                                      Routes.PIUTANG);
-                                                                },
-                                                                icon: Image.asset(
-                                                                    'assets/icons/piutang_order.png'),
-                                                              ),
-                                                              InkWell(
-                                                                onTap: () {
-                                                                  Get.toNamed(
-                                                                      Routes.PIUTANG);
-                                                                },
-                                                                child: Text(
-                                                                  'Piutang',
-                                                                  style: GoogleFonts
-                                                                      .poppins(
-                                                                    fontSize: 12,
-                                                                    fontWeight:
-                                                                    FontWeight.w500,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              },
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              }
-                            }
-                          )),
+                          // SizedBox(
+                          //   height: 200,
+                          //   child: Obx(() {
+                          //     if (controller.listToko.isEmpty) {
+                          //       return Center(
+                          //         child: Text("No schedule now", style: GoogleFonts.poppins(),),
+                          //       );
+                          //     } else {
+                          //       return ListView.builder(
+                          //         itemCount: controller.listToko.length,
+                          //         itemBuilder: (context, index) {
+                          //           final item = controller.listToko[index];
+                          //           return ListTile(
+                          //             leading: SizedBox(
+                          //                 width: 50,
+                          //                 height: 50,
+                          //                 child: Image.network(
+                          //                   (ApiConstant.baseUrl + item.image.toString()),
+                          //                   fit: BoxFit.cover,
+                          //                 )),
+                          //             title: Text(
+                          //               item.nameToko ?? '',
+                          //               style: GoogleFonts.poppins(
+                          //                   fontSize: 12,
+                          //                   fontWeight: FontWeight.w600),
+                          //             ),
+                          //             subtitle:
+                          //             Text(
+                          //               '${item.address ?? ''} ${item.kota ?? ''} ${item.provinsi ?? ''}', maxLines: 2,
+                          //               // Batasi jumlah baris maksimum
+                          //               overflow: TextOverflow.ellipsis,
+                          //             ),
+                          //             trailing: IgnorePointer(
+                          //               ignoring: !controller.checklist.value,
+                          //               child: IconButton(
+                          //                 icon: controller.checklist.value
+                          //                     ? Image.asset('assets/icons/node.png')
+                          //                     : Image.asset('assets/icons/node_istirahat.png'),
+                          //                 onPressed: () {
+                          //                   showDialog(
+                          //                     context: context,
+                          //                     builder: (context) {
+                          //                       return AlertDialog(
+                          //                         content: SingleChildScrollView(
+                          //                           child: SizedBox(
+                          //                             width: 200,
+                          //                             // Sesuaikan dengan lebar yang diinginkan
+                          //                             height: 300,
+                          //                             // Sesuaikan dengan tinggi yang diinginkan
+                          //                             child: Column(
+                          //                               mainAxisSize:
+                          //                               MainAxisSize.min,
+                          //                               // Menyesuaikan tinggi konten dengan isi
+                          //                               children: [
+                          //                                 Row(
+                          //                                   children: [
+                          //                                     IconButton(
+                          //                                       onPressed: () {
+                          //                                         controller.getImageFromCamera();
+                          //                                       },
+                          //                                       icon: Image.asset(
+                          //                                           'assets/icons/absen_toko.png'),
+                          //                                     ),
+                          //                                     InkWell(
+                          //                                       onTap: () {
+                          //                                         controller.getImageFromCamera();
+                          //                                       },
+                          //                                       child: Text(
+                          //                                         'Absen Toko',
+                          //                                         style: GoogleFonts
+                          //                                             .poppins(
+                          //                                           fontSize: 12,
+                          //                                           fontWeight:
+                          //                                           FontWeight.w500,
+                          //                                         ),
+                          //                                       ),
+                          //                                     ),
+                          //                                   ],
+                          //                                 ),
+                          //                                 Row(
+                          //                                   children: [
+                          //                                     IconButton(
+                          //                                       onPressed: () {
+                          //                                         Get.toNamed(Routes.DETAILTOKO, arguments: item);
+                          //                                       },
+                          //                                       icon: Image.asset(
+                          //                                           'assets/icons/detail_toko.png'),
+                          //                                     ),
+                          //                                     InkWell(
+                          //                                       onTap: () {
+                          //                                         Get.toNamed(Routes.DETAILTOKO, arguments: item);
+                          //                                       },
+                          //                                       child: Text(
+                          //                                         'Detail Toko',
+                          //                                         style: GoogleFonts
+                          //                                             .poppins(
+                          //                                           fontSize: 12,
+                          //                                           fontWeight:
+                          //                                           FontWeight.w500,
+                          //                                         ),
+                          //                                       ),
+                          //                                     ),
+                          //                                   ],
+                          //                                 ),
+                          //                                 Row(
+                          //                                   children: [
+                          //                                     IconButton(
+                          //                                       onPressed: () {
+                          //                                         Get.toNamed(Routes
+                          //                                             .SALESORDER);
+                          //                                       },
+                          //                                       icon: Image.asset(
+                          //                                           'assets/icons/sales_order.png'),
+                          //                                     ),
+                          //                                     InkWell(
+                          //                                       onTap: () {
+                          //                                         Get.toNamed(Routes
+                          //                                             .SALESORDER);
+                          //                                       },
+                          //                                       child: Text(
+                          //                                         'Sales Order',
+                          //                                         style: GoogleFonts
+                          //                                             .poppins(
+                          //                                           fontSize: 12,
+                          //                                           fontWeight:
+                          //                                           FontWeight.w500,
+                          //                                         ),
+                          //                                       ),
+                          //                                     ),
+                          //                                   ],
+                          //                                 ),
+                          //                                 Row(
+                          //                                   children: [
+                          //                                     IconButton(
+                          //                                       onPressed: () {
+                          //                                         Get.toNamed(Routes
+                          //                                             .NOTORDER);
+                          //                                       },
+                          //                                       icon: Image.asset(
+                          //                                           'assets/icons/not_order.png'),
+                          //                                     ),
+                          //                                     InkWell(
+                          //                                       onTap: () {
+                          //                                         Get.toNamed(Routes
+                          //                                             .NOTORDER);
+                          //                                       },
+                          //                                       child: Text(
+                          //                                         'Not Order',
+                          //                                         style: GoogleFonts
+                          //                                             .poppins(
+                          //                                           fontSize: 12,
+                          //                                           fontWeight:
+                          //                                           FontWeight.w500,
+                          //                                         ),
+                          //                                       ),
+                          //                                     ),
+                          //                                   ],
+                          //                                 ),
+                          //                                 Row(
+                          //                                   children: [
+                          //                                     IconButton(
+                          //                                       onPressed: () {
+                          //                                         Get.toNamed(
+                          //                                             Routes.RETUR);
+                          //                                       },
+                          //                                       icon: Image.asset(
+                          //                                           'assets/icons/return.png'),
+                          //                                     ),
+                          //                                     InkWell(
+                          //                                       onTap: () {
+                          //                                         Get.toNamed(
+                          //                                             Routes.RETUR);
+                          //                                       },
+                          //                                       child: Text(
+                          //                                         'Retur',
+                          //                                         style: GoogleFonts
+                          //                                             .poppins(
+                          //                                           fontSize: 12,
+                          //                                           fontWeight:
+                          //                                           FontWeight.w500,
+                          //                                         ),
+                          //                                       ),
+                          //                                     ),
+                          //                                   ],
+                          //                                 ),
+                          //                                 Row(
+                          //                                   children: [
+                          //                                     IconButton(
+                          //                                       onPressed: () {
+                          //                                         Get.toNamed(
+                          //                                             Routes.PIUTANG);
+                          //                                       },
+                          //                                       icon: Image.asset(
+                          //                                           'assets/icons/piutang_order.png'),
+                          //                                     ),
+                          //                                     InkWell(
+                          //                                       onTap: () {
+                          //                                         Get.toNamed(
+                          //                                             Routes.PIUTANG);
+                          //                                       },
+                          //                                       child: Text(
+                          //                                         'Piutang',
+                          //                                         style: GoogleFonts
+                          //                                             .poppins(
+                          //                                           fontSize: 12,
+                          //                                           fontWeight:
+                          //                                           FontWeight.w500,
+                          //                                         ),
+                          //                                       ),
+                          //                                     ),
+                          //                                   ],
+                          //                                 ),
+                          //                               ],
+                          //                             ),
+                          //                           ),
+                          //                         ),
+                          //                       );
+                          //                     },
+                          //                   );
+                          //                 },
+                          //               ),
+                          //             ),
+                          //           );
+                          //         },
+                          //       );
+                          //     }
+                          //   }
+                          // )),
                           const SizedBox(
                             height: 5,
                           ),

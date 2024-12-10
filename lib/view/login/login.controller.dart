@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:salesforce/auth/service/auth.service.dart';
 import 'package:salesforce/utils/storage.dart';
 import 'package:salesforce/repository/repository.dart';
 
@@ -12,7 +11,6 @@ import 'login.dart';
 class LoginController extends GetxController
     with GetSingleTickerProviderStateMixin {
   final Storage storage = Storage();
-  AuthService service = AuthService();
   Repository repository = Repository();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -69,82 +67,89 @@ class LoginController extends GetxController
   Animation<Offset> get slideInAnimation => _slideInAnimation;
 
   void login() {
-    isLogin.value = true;
-    Map data = {'username': email.text, 'password': password.text};
-    repository.login(data).then((value) {
-      isLogin.value = false;
-      Utils.snackBar('Login', 'LoginSuccessfully');
-      final roles = storage.getRole();
-      String? routedDirection;
+    try {
+      isLogin.value = true;
+      Map data = {'username': email.text, 'password': password.text};
+      repository.login(data).then((value) {
+        isLogin.value = false;
+        Utils.snackBar('Login', 'LoginSuccessfully');
+        final roles = storage.getRole();
+        String? routedDirection;
 
-      if (roles == "ROLE_ADMIN") {
-        routedDirection = Routes.HOME;
-      } else if (roles == "ROLE_CUSTOMER") {
-        routedDirection = Routes.HOMEDRIVER;
-      } else {
-        routedDirection = Routes.LOGIN;
-      }
+        if (roles == "ROLE_ADMIN") {
+          routedDirection = Routes.HOME;
+        } else if (roles == "ROLE_CUSTOMER") {
+          routedDirection = Routes.HOMEDRIVER;
+        } else {
+          routedDirection = Routes.LOGIN;
+        }
 
-      Get.dialog(
-        barrierDismissible: false,
-        AlertDialog(
-            contentPadding: const EdgeInsets.all(20.0),
-            title: const AnimatedCheckmark(),
-            content: SizedBox(
-              height: 80,
-              child: Column(
-                children: [
-                  const SizedBox(height: 16.0),
-                  RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 16.0,
-                      ),
-                      children: [
-                        const TextSpan(
-                          text: 'Selamat Datang\n',
+        Get.dialog(
+          barrierDismissible: false,
+          AlertDialog(
+              contentPadding: const EdgeInsets.all(20.0),
+              title: const AnimatedCheckmark(),
+              content: SizedBox(
+                height: 80,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 16.0),
+                    RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 16.0,
                         ),
-                        TextSpan(
-                          text: storage.getName(),
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+                        children: [
+                          const TextSpan(
+                            text: 'Selamat Datang\n',
                           ),
-                        ),
-                      ],
+                          TextSpan(
+                            text: storage.getName(),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10.0),
+                    const Divider(color: Colors.black),
+                  ],
+                ),
+              ),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    if (routedDirection != null) {
+                      Get.offAllNamed(routedDirection!);
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF2DCE89),
+                    minimumSize: const Size.fromHeight(50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  const SizedBox(height: 10.0),
-                  const Divider(color: Colors.black),
-                ],
-              ),
-            ),
-            actions: [
-              ElevatedButton(
-                onPressed: () {
-                  if (routedDirection != null) {
-                    Get.offAllNamed(routedDirection!);
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF2DCE89),
-                  minimumSize: const Size.fromHeight(50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                  child: const Text(
+                    'Oke',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
-                child: const Text(
-                  'Oke',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ]),
-      );
-    }).onError((error, stackTrace) {
+              ]),
+        );
+      }).onError((error, stackTrace) {
+        isLogin.value = false;
+        Utils.snackBar('error', error.toString());
+      });
+    } catch (e) {
       isLogin.value = false;
-      Utils.snackBar('error', error.toString());
-    });
+      print(e);
+    } finally {
+      isLogin.value = false;
+    }
   }
 
   void validateLogin() {

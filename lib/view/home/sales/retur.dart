@@ -182,46 +182,46 @@ class ReturOrder extends GetView<SalesController> {
                                           mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                           children: [
-                                            SizedBox(
-                                              width: screenWidth * 0.45,
-                                              height: 50,
-                                              child:
-                                              DropdownButtonFormField<int>(
-                                                hint: const Text(
-                                                    'Satuan Produk*'),
-                                                value: controller.idSatuanProduct,
-                                                onChanged: (newValue) {
-                                                  controller.idSatuanProduct = newValue;
-                                                },
-                                                items: controller.listSatuanProduct.map<DropdownMenuItem<int>>((item) {
-                                                    return DropdownMenuItem<int>(
-                                                    value: item.id_satuan,
-                                                    child: Text(item.satuan_product.toString()),
-                                                    );
-                                                    }).toList(),
-                                                decoration: InputDecoration(
-                                                  //contentPadding: EdgeInsets.symmetric(horizontal: 12.0),
-                                                  isDense: true,
-                                                  // Reduces the vertical size of the dropdown
-                                                  enabledBorder:
-                                                  OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                        color: Colors.grey),
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                        5.0),
-                                                  ),
-                                                  focusedBorder:
-                                                  OutlineInputBorder(
-                                                    borderSide: const BorderSide(
-                                                        color: Colors.blue),
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                        5.0),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
+                                            // SizedBox(
+                                            //   width: screenWidth * 0.45,
+                                            //   height: 50,
+                                            //   child:
+                                            //   DropdownButtonFormField<int>(
+                                            //     hint: const Text(
+                                            //         'Satuan Produk*'),
+                                            //     value: controller.idSatuanProduct,
+                                            //     onChanged: (newValue) {
+                                            //       controller.idSatuanProduct = newValue;
+                                            //     },
+                                            //     items: controller.listSatuanProduct.map<DropdownMenuItem<int>>((item) {
+                                            //         return DropdownMenuItem<int>(
+                                            //         value: item.id_satuan,
+                                            //         child: Text(item.satuan_product.toString()),
+                                            //         );
+                                            //         }).toList(),
+                                            //     decoration: InputDecoration(
+                                            //       //contentPadding: EdgeInsets.symmetric(horizontal: 12.0),
+                                            //       isDense: true,
+                                            //       // Reduces the vertical size of the dropdown
+                                            //       enabledBorder:
+                                            //       OutlineInputBorder(
+                                            //         borderSide: const BorderSide(
+                                            //             color: Colors.grey),
+                                            //         borderRadius:
+                                            //         BorderRadius.circular(
+                                            //             5.0),
+                                            //       ),
+                                            //       focusedBorder:
+                                            //       OutlineInputBorder(
+                                            //         borderSide: const BorderSide(
+                                            //             color: Colors.blue),
+                                            //         borderRadius:
+                                            //         BorderRadius.circular(
+                                            //             5.0),
+                                            //       ),
+                                            //     ),
+                                            //   ),
+                                            // ),
                                             Container(
                                               width: screenWidth * 0.45,
                                               height: 50,
@@ -342,7 +342,7 @@ class ReturOrder extends GetView<SalesController> {
                                                               .circular(
                                                               5))),
                                                   onPressed: () {
-                                                    controller.createProductReturn();
+                                                  //  controller.createProductReturn();
                                                   },
                                                   child: Text(
                                                     'TAMBAHKAN',
@@ -387,93 +387,93 @@ class ReturOrder extends GetView<SalesController> {
                   ],
                 ),
                 const SizedBox(height: 5,),
-                DataTable(
-                    columnSpacing: 40,
-                    columns: [
-                      DataColumn(label: Text('No', style: GoogleFonts.poppins(
-                          fontSize: 10, fontWeight: FontWeight.w700),)),
-                      DataColumn(label: Text('Produk\nRetur', style: GoogleFonts.poppins(
-                          fontSize: 10, fontWeight: FontWeight.w700),)),
-                      DataColumn(label: Text('Sub\nTotal', style: GoogleFonts.poppins(
-                          fontSize: 10, fontWeight: FontWeight.w700),)),
-                      DataColumn(label: Text('Alasan', style: GoogleFonts.poppins(
-                          fontSize: 10, fontWeight: FontWeight.w700),)),
-                      DataColumn(label: Text('Act', style: GoogleFonts.poppins(
-                          fontSize: 10, fontWeight: FontWeight.w700),)),
-                    ] , rows: List.generate(
-                    controller.listBarang.length, (index) {
-                      final item = controller.listBarang[index];
-                      print(item.name);
-                      return DataRow(cells: [
-                        DataCell(Text(item.id.toString(), style: GoogleFonts.poppins(fontSize: 10),)),
-                        DataCell(Text(item.name ?? '', style: GoogleFonts.poppins(fontSize: 10),)),
-                        DataCell(Text(
-                          (item.price ?? 0.0).toStringAsFixed(2), // Mengonversi double ke string dengan 2 tempat desimal
-                          style: GoogleFonts.poppins(fontSize: 10),
-                        ),),
-                        DataCell(InkWell(
-                          onTap: () {
-                            showModalBottomSheet(
-                                context: context, builder: (BuildContext context) {
-                                  return SizedBox(
-                                    width: double.infinity,
-                                    height: 200,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(item.alasan ?? '', style: GoogleFonts.poppins(fontSize: 14)),
-                                        const SizedBox(height: 25,),
-                                        ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: Colors.grey,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(5)
-                                            )
-                                          ),
-                                            onPressed: () {
-                                              Get.back();
-                                            },
-                                            child: Text('TUTUP', style: GoogleFonts.poppins(color: Colors.white),))
-                                      ],
-                                    ),
-                                  );
-                            });
-                          },
-                          child: Text('Lihat', style: GoogleFonts.poppins(fontSize: 10, color: Colors.blueAccent)),
-                          ),
-                        ),
-                        DataCell(IconButton(
-                          onPressed: () {
-                            Get.defaultDialog(
-                              barrierDismissible: true,
-                              title: 'Konfirmasi Hapus',
-                              content: const Padding(
-                                padding: EdgeInsets.all(10.0),
-                                child: Text('Apakah Anda yakin ingin menghapus data ini?'),
-                              ),
-                              confirm: TextButton(
-                                onPressed: () {
-                                  controller.deleteProductReturn(item.id ?? 0);
-                                  controller.listBarang;
-                                },
-                                child: Text('Hapus', style: GoogleFonts.poppins(
-                                  color: Colors.black
-                                ),),
-                              ),
-                              cancel: TextButton(
-                                onPressed: () {
-                                  Get.back();
-                                },
-                                child: Text('Batal', style: GoogleFonts.poppins(
-                                  color: Colors.red
-                                ),),
-                              ),
-                            );
-                          },
-                          icon: const Icon(Icons.delete),
-                        )),
-                      ]);
-                })),
+                // DataTable(
+                //     columnSpacing: 40,
+                //     columns: [
+                //       DataColumn(label: Text('No', style: GoogleFonts.poppins(
+                //           fontSize: 10, fontWeight: FontWeight.w700),)),
+                //       DataColumn(label: Text('Produk\nRetur', style: GoogleFonts.poppins(
+                //           fontSize: 10, fontWeight: FontWeight.w700),)),
+                //       DataColumn(label: Text('Sub\nTotal', style: GoogleFonts.poppins(
+                //           fontSize: 10, fontWeight: FontWeight.w700),)),
+                //       DataColumn(label: Text('Alasan', style: GoogleFonts.poppins(
+                //           fontSize: 10, fontWeight: FontWeight.w700),)),
+                //       DataColumn(label: Text('Act', style: GoogleFonts.poppins(
+                //           fontSize: 10, fontWeight: FontWeight.w700),)),
+                //     ] , rows: List.generate(
+                //     controller.listBarang.length, (index) {
+                //       final item = controller.listBarang[index];
+                //       print(item.name);
+                //       return DataRow(cells: [
+                //         DataCell(Text(item.id.toString(), style: GoogleFonts.poppins(fontSize: 10),)),
+                //         DataCell(Text(item.name ?? '', style: GoogleFonts.poppins(fontSize: 10),)),
+                //         DataCell(Text(
+                //           (item.price ?? 0.0).toStringAsFixed(2), // Mengonversi double ke string dengan 2 tempat desimal
+                //           style: GoogleFonts.poppins(fontSize: 10),
+                //         ),),
+                //         DataCell(InkWell(
+                //           onTap: () {
+                //             showModalBottomSheet(
+                //                 context: context, builder: (BuildContext context) {
+                //                   return SizedBox(
+                //                     width: double.infinity,
+                //                     height: 200,
+                //                     child: Column(
+                //                       mainAxisAlignment: MainAxisAlignment.center,
+                //                       children: [
+                //                         Text(item.alasan ?? '', style: GoogleFonts.poppins(fontSize: 14)),
+                //                         const SizedBox(height: 25,),
+                //                         ElevatedButton(
+                //                           style: ElevatedButton.styleFrom(
+                //                             backgroundColor: Colors.grey,
+                //                             shape: RoundedRectangleBorder(
+                //                               borderRadius: BorderRadius.circular(5)
+                //                             )
+                //                           ),
+                //                             onPressed: () {
+                //                               Get.back();
+                //                             },
+                //                             child: Text('TUTUP', style: GoogleFonts.poppins(color: Colors.white),))
+                //                       ],
+                //                     ),
+                //                   );
+                //             });
+                //           },
+                //           child: Text('Lihat', style: GoogleFonts.poppins(fontSize: 10, color: Colors.blueAccent)),
+                //           ),
+                //         ),
+                //         DataCell(IconButton(
+                //           onPressed: () {
+                //             Get.defaultDialog(
+                //               barrierDismissible: true,
+                //               title: 'Konfirmasi Hapus',
+                //               content: const Padding(
+                //                 padding: EdgeInsets.all(10.0),
+                //                 child: Text('Apakah Anda yakin ingin menghapus data ini?'),
+                //               ),
+                //               confirm: TextButton(
+                //                 onPressed: () {
+                //                   controller.deleteProductReturn(item.id ?? 0);
+                //                   controller.listBarang;
+                //                 },
+                //                 child: Text('Hapus', style: GoogleFonts.poppins(
+                //                   color: Colors.black
+                //                 ),),
+                //               ),
+                //               cancel: TextButton(
+                //                 onPressed: () {
+                //                   Get.back();
+                //                 },
+                //                 child: Text('Batal', style: GoogleFonts.poppins(
+                //                   color: Colors.red
+                //                 ),),
+                //               ),
+                //             );
+                //           },
+                //           icon: const Icon(Icons.delete),
+                //         )),
+                //       ]);
+                // })),
                 DataTable(columnSpacing: 30, columns: [
                   DataColumn(
                     label: Text(

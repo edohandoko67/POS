@@ -11,9 +11,12 @@ class NetworkApiService extends BaseApiService {
   Future<dynamic> getApi(String url) async {
     dynamic responseJson;
     try {
-      final response = await http.get(Uri.parse(url)).timeout(
-        const Duration(seconds: 10)
-      );
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json', // Menambahkan header Content-Type
+        },
+      ).timeout(const Duration(seconds: 10));
       responseJson = returnResponse(response);
     } on SocketException {
       throw InternetException("");
@@ -29,9 +32,14 @@ class NetworkApiService extends BaseApiService {
     print(data);
     dynamic responseJson;
     try {
-      final response = await http.post(Uri.parse(url), body: jsonEncode(data)).timeout(
-          const Duration(seconds: 10)
-      );
+      final response = await http
+          .post(Uri.parse(url),
+              headers: {
+                'Content-Type': 'application/json',
+                // Menambahkan header Content-Type
+              },
+              body: jsonEncode(data))
+          .timeout(const Duration(seconds: 10));
       responseJson = returnResponse(response);
     } on SocketException {
       throw InternetException("");
@@ -51,8 +59,8 @@ class NetworkApiService extends BaseApiService {
         return responseJson;
       default:
         throw FetchDataException(
-          'error occured while communication with server' + response.statusCode.toString()
-        );
+            'error occured while communication with server' +
+                response.statusCode.toString());
     }
   }
 }

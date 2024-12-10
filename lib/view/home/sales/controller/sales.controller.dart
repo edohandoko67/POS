@@ -7,23 +7,23 @@ import 'package:dio/dio.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:salesforce/auth/model/absen.toko.model.dart';
-import 'package:salesforce/auth/model/cart.dart';
-import 'package:salesforce/auth/model/image_detail_stock.dart';
-import 'package:salesforce/auth/model/jadwal.sales.dart';
-import 'package:salesforce/auth/model/login.model.dart';
-import 'package:salesforce/auth/model/product.model.dart';
-import 'package:salesforce/auth/model/satuan.product.dart';
-import 'package:salesforce/auth/model/stock.product.dart';
-import 'package:salesforce/auth/service/auth.service.dart';
+// import 'package:salesforce/auth/model/absen.toko.model.dart';
+// import 'package:salesforce/auth/model/cart.dart';
+// import 'package:salesforce/auth/model/image_detail_stock.dart';
+// import 'package:salesforce/auth/model/jadwal.sales.dart';
+// import 'package:salesforce/auth/model/login.model.dart';
+// import 'package:salesforce/auth/model/product.model.dart';
+// import 'package:salesforce/auth/model/satuan.product.dart';
+// import 'package:salesforce/auth/model/stock.product.dart';
+// import 'package:salesforce/auth/service/auth.service.dart';
 import 'package:salesforce/utils/storage.dart';
 import 'package:salesforce/view/home/sales/image.keterangan.dart';
-import '../../../../auth/model/tracking.dart';
+// import '../../../../auth/model/tracking.dart';
 
 
 class SalesController extends GetxController {
   Completer<GoogleMapController> mapController = Completer();
-  AuthService service = AuthService();
+  // AuthService service = AuthService();
   TextEditingController date = TextEditingController();
   Storage storage = Storage();
   TextEditingController nameProduct = TextEditingController();
@@ -44,7 +44,7 @@ class SalesController extends GetxController {
   RxBool isLoading = true.obs;
 
   Rx<LatLng> officeLocation = const LatLng(-7.482151427258845, 112.44826629209244).obs;
-  Rx<AbsenTokoModel> absenToko = AbsenTokoModel().obs;
+  // Rx<AbsenTokoModel> absenToko = AbsenTokoModel().obs;
   int? idSalesController;
 
   RxDouble total = 0.0.obs;
@@ -52,13 +52,13 @@ class SalesController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    listSatuan();
-    fecthAllKurir();
-    fecthDataTracking();
-    fetchAllProducts();
-    double? latitude = (absenToko.value.latitude ?? 0).toDouble();
-    double? longitude = (absenToko.value.longitude ?? 0).toDouble();
-    officeLocation = LatLng(latitude, longitude).obs;
+    // listSatuan();
+    // fecthAllKurir();
+    // fecthDataTracking();
+    // fetchAllProducts();
+    // double? latitude = (absenToko.value.latitude ?? 0).toDouble();
+    // double? longitude = (absenToko.value.longitude ?? 0).toDouble();
+    // officeLocation = LatLng(latitude, longitude).obs;
     print("lokasi : $officeLocation");
     _currentLocation();
 
@@ -101,12 +101,12 @@ class SalesController extends GetxController {
     },
   ];
 
-  var selectedProduct = Rx<ImageDetailStock?>(null);
-
-  // Method untuk mengubah produk yang dipilih
-  void selectProduct(ImageDetailStock stock) {
-    selectedProduct.value = stock;
-  }
+  // var selectedProduct = Rx<ImageDetailStock?>(null);
+  //
+  // // Method untuk mengubah produk yang dipilih
+  // void selectProduct(ImageDetailStock stock) {
+  //   selectedProduct.value = stock;
+  // }
 
 
   final ImagePicker _picker = ImagePicker();
@@ -172,199 +172,199 @@ class SalesController extends GetxController {
     // print(position);
   }
 
-  RxList<Product> listBarang = <Product>[].obs;
-  Future<void> listProductBarang() async {
-    try {
-      isLoading.value = true;
-      listBarang.value = await service.listProduct(
-          {
-            "" : ""
-          }
-      );
-    } catch (e) {
-      print(e);
-    } finally {
-      isLoading.value = false;
-    }
-
-    total.value = listBarang.map((item) => item.price ?? 0.0).sum;
-    print('Total : ${total.value}');
-    print('jumlah : ${listBarang.value.length}');
-
-  }
-
-  RxList<SatuanProduct> listSatuanProduct = <SatuanProduct>[].obs;
-  Future<void> listSatuan() async {
-    listSatuanProduct.value = await service.listSatuan(
-      {
-        "" : ""
-      }
-    );
-  }
-
-  Rx<Product> productBarang = Product().obs;
-  Future<void> createProductReturn() async {
-    bool result = await service.createProductRetur({
-      "name" : nameProduct.text,
-      "price": priceProduct.text,
-      "pembuat": pembuatProduct.text,
-      "alasan": alasanProduct.text,
-      "discount": discountProduct.text,
-      "quantity": quantityProduct.text
-    });
-    if (result) {
-      listProductBarang();
-      nameProduct.clear();
-      priceProduct.clear();
-      pembuatProduct.clear();
-      alasanProduct.clear();
-      discountProduct.clear();
-      quantityProduct.clear();
-    }
-  }
-
-  Future<void> deleteProductReturn(int id) async {
-    bool result = await service.deleteProductRetur({
-      "id_product" : id
-    });
-    if (result) listProductBarang();
-  }
-
-
-  Future<void> createAbsen() async {
-    try {
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
-      bool result = await service.createAbsenToko({
-        "image_absen": imagePath.value == null ? null : await MultipartFile.fromFile(imagePath.value!.path),
-        "latitude": position.latitude,
-        "longitude": position.longitude,
-        "keterangan": keterangan.text
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  RxList<StockProduct> listStockProduct = <StockProduct>[].obs;
-  // Future<void> listStock() async {
+  // RxList<Product> listBarang = <Product>[].obs;
+  // Future<void> listProductBarang() async {
   //   try {
-  //     listStockProduct.value = await service.listStock({
+  //     isLoading.value = true;
+  //     listBarang.value = await service.listProduct(
+  //         {
+  //           "" : ""
+  //         }
+  //     );
+  //   } catch (e) {
+  //     print(e);
+  //   } finally {
+  //     isLoading.value = false;
+  //   }
+  //
+  //   total.value = listBarang.map((item) => item.price ?? 0.0).sum;
+  //   print('Total : ${total.value}');
+  //   print('jumlah : ${listBarang.value.length}');
+  //
+  // }
+  //
+  // RxList<SatuanProduct> listSatuanProduct = <SatuanProduct>[].obs;
+  // Future<void> listSatuan() async {
+  //   listSatuanProduct.value = await service.listSatuan(
+  //     {
   //       "" : ""
-  //     });
-  //   } catch (e, stackTrace) {
-  //     print('error : $e');
-  //     print('stackTrace : $stackTrace');
+  //     }
+  //   );
+  // }
+  //
+  // Rx<Product> productBarang = Product().obs;
+  // Future<void> createProductReturn() async {
+  //   bool result = await service.createProductRetur({
+  //     "name" : nameProduct.text,
+  //     "price": priceProduct.text,
+  //     "pembuat": pembuatProduct.text,
+  //     "alasan": alasanProduct.text,
+  //     "discount": discountProduct.text,
+  //     "quantity": quantityProduct.text
+  //   });
+  //   if (result) {
+  //     listProductBarang();
+  //     nameProduct.clear();
+  //     priceProduct.clear();
+  //     pembuatProduct.clear();
+  //     alasanProduct.clear();
+  //     discountProduct.clear();
+  //     quantityProduct.clear();
   //   }
   // }
-
-  var allStockProducts = <StockProduct>[].obs; // asli
-  var filteredStockProducts = <StockProduct>[].obs; //setelah di filter
-
-  void fetchAllProducts() async {
-    try {
-      var products = await service.fetchStockProducts();
-      allStockProducts.assignAll(products);
-      filteredStockProducts.assignAll(products);
-    } catch (e) {
-      print("Error in fetchAllProducts: $e");
-    }
-  }
-
-  void searchProducts(String query) {
-    filteredStockProducts.value = allStockProducts
-        .where((product) => product.productName!.toLowerCase().contains(query.toLowerCase()))
-        .toList();
-  }
-
-  RxList<JadwalSales> listKurir = <JadwalSales>[].obs;
-  void fecthAllKurir() async {
-    listKurir.value = await service.listSales({
-      "" : ""
-    });
-  }
-
-  Rx<Tracking> trackingBarang = Tracking().obs;
-  RxList<Tracking> trackingProduct = <Tracking>[].obs;
-  void fecthDataTracking() async {
-    trackingProduct.value = await service.listTrackingProduct({
-      "" : ""
-    });
-  }
-
-  RxBool isTrackingVisibility = false.obs;
-  Future<void> trackingKurir() async {
-    try {
-      Tracking? result = await service.trackingProduct({
-        "noResi": TextNoResi.text
-      });
-      if (result != null) {
-        trackingProduct.value = [result];
-        isTrackingVisibility.value = true;
-        print("Tracking berhasil!");
-      } else {
-        trackingProduct.value = [];
-        isTrackingVisibility.value = false;
-        print("Tracking gagal!");
-      }
-    } catch (e, stackTrace) {
-      print("Terjadi kesalahan: $e");
-      print("Terjadi kesalahan: $stackTrace");
-      trackingProduct.value = [];
-      isTrackingVisibility.value = false;
-    }
-  }
-
-  RxList<ImageDetailStock> listDetailStock = <ImageDetailStock>[].obs;
-  Future<void> fetchDetailImage() async {
-    try {
-      listDetailStock.value = await service.listImageDetail({
-        "" : ""
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  void updateLoginModel(LoginModel model) {
-    loginModel.value = model;
-    addToCart();
-  }
-
-  Rx<LoginModel> loginModel = LoginModel().obs;
-  Future<void> addToCart() async {
-    try {
-      var idStock = selectedProduct.value?.idImageDetail;
-      //var userId = loginModel.value.idUser;
-      print("userId: ${storage.getId}");
-      // if (userId == 0 || userId == null) {
-      //   throw Exception("User ID is not set or invalid.");
-      // }
-      var result = await service.createCheckout({
-        "userId": storage.getId(),
-        "id_stock": idStock,
-        "quantity": count.value
-      });
-      if (result) {
-        count.value = 0;
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
-
-
-  RxList<Cart> cartList = <Cart>[].obs;
-  Future<void> listCartById() async {
-    try {
-      cartList.value = await service.listCartById({
-        "userId" : storage.getId()
-      });
-    } catch (e, stackTrace) {
-      print("Error: ${e.toString()}");
-      print("stackTrace: ${stackTrace.toString()}");
-    }
-  }
+  //
+  // Future<void> deleteProductReturn(int id) async {
+  //   bool result = await service.deleteProductRetur({
+  //     "id_product" : id
+  //   });
+  //   if (result) listProductBarang();
+  // }
+  //
+  //
+  // Future<void> createAbsen() async {
+  //   try {
+  //     Position position = await Geolocator.getCurrentPosition(
+  //         desiredAccuracy: LocationAccuracy.high);
+  //     bool result = await service.createAbsenToko({
+  //       "image_absen": imagePath.value == null ? null : await MultipartFile.fromFile(imagePath.value!.path),
+  //       "latitude": position.latitude,
+  //       "longitude": position.longitude,
+  //       "keterangan": keterangan.text
+  //     });
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
+  //
+  // RxList<StockProduct> listStockProduct = <StockProduct>[].obs;
+  // // Future<void> listStock() async {
+  // //   try {
+  // //     listStockProduct.value = await service.listStock({
+  // //       "" : ""
+  // //     });
+  // //   } catch (e, stackTrace) {
+  // //     print('error : $e');
+  // //     print('stackTrace : $stackTrace');
+  // //   }
+  // // }
+  //
+  // var allStockProducts = <StockProduct>[].obs; // asli
+  // var filteredStockProducts = <StockProduct>[].obs; //setelah di filter
+  //
+  // void fetchAllProducts() async {
+  //   try {
+  //     var products = await service.fetchStockProducts();
+  //     allStockProducts.assignAll(products);
+  //     filteredStockProducts.assignAll(products);
+  //   } catch (e) {
+  //     print("Error in fetchAllProducts: $e");
+  //   }
+  // }
+  //
+  // void searchProducts(String query) {
+  //   filteredStockProducts.value = allStockProducts
+  //       .where((product) => product.productName!.toLowerCase().contains(query.toLowerCase()))
+  //       .toList();
+  // }
+  //
+  // RxList<JadwalSales> listKurir = <JadwalSales>[].obs;
+  // void fecthAllKurir() async {
+  //   listKurir.value = await service.listSales({
+  //     "" : ""
+  //   });
+  // }
+  //
+  // Rx<Tracking> trackingBarang = Tracking().obs;
+  // RxList<Tracking> trackingProduct = <Tracking>[].obs;
+  // void fecthDataTracking() async {
+  //   trackingProduct.value = await service.listTrackingProduct({
+  //     "" : ""
+  //   });
+  // }
+  //
+  // RxBool isTrackingVisibility = false.obs;
+  // Future<void> trackingKurir() async {
+  //   try {
+  //     Tracking? result = await service.trackingProduct({
+  //       "noResi": TextNoResi.text
+  //     });
+  //     if (result != null) {
+  //       trackingProduct.value = [result];
+  //       isTrackingVisibility.value = true;
+  //       print("Tracking berhasil!");
+  //     } else {
+  //       trackingProduct.value = [];
+  //       isTrackingVisibility.value = false;
+  //       print("Tracking gagal!");
+  //     }
+  //   } catch (e, stackTrace) {
+  //     print("Terjadi kesalahan: $e");
+  //     print("Terjadi kesalahan: $stackTrace");
+  //     trackingProduct.value = [];
+  //     isTrackingVisibility.value = false;
+  //   }
+  // }
+  //
+  // RxList<ImageDetailStock> listDetailStock = <ImageDetailStock>[].obs;
+  // Future<void> fetchDetailImage() async {
+  //   try {
+  //     listDetailStock.value = await service.listImageDetail({
+  //       "" : ""
+  //     });
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
+  //
+  // void updateLoginModel(LoginModel model) {
+  //   loginModel.value = model;
+  //   addToCart();
+  // }
+  //
+  // Rx<LoginModel> loginModel = LoginModel().obs;
+  // Future<void> addToCart() async {
+  //   try {
+  //     var idStock = selectedProduct.value?.idImageDetail;
+  //     //var userId = loginModel.value.idUser;
+  //     print("userId: ${storage.getId}");
+  //     // if (userId == 0 || userId == null) {
+  //     //   throw Exception("User ID is not set or invalid.");
+  //     // }
+  //     var result = await service.createCheckout({
+  //       "userId": storage.getId(),
+  //       "id_stock": idStock,
+  //       "quantity": count.value
+  //     });
+  //     if (result) {
+  //       count.value = 0;
+  //     }
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
+  //
+  //
+  // RxList<Cart> cartList = <Cart>[].obs;
+  // Future<void> listCartById() async {
+  //   try {
+  //     cartList.value = await service.listCartById({
+  //       "userId" : storage.getId()
+  //     });
+  //   } catch (e, stackTrace) {
+  //     print("Error: ${e.toString()}");
+  //     print("stackTrace: ${stackTrace.toString()}");
+  //   }
+  // }
 
 // void trackingKurir() async {
   //   try {

@@ -1,5 +1,5 @@
 class ApiEndPoints {
-    static const String baseUrl = 'http://192.168.2.213:8080/';
+    static const String baseUrl = 'http://192.168.2.98:8080/';
     static const String baseUrlNotification = 'https://onesignal.com/api/v1/';
 
     static const String login = '${baseUrl}login';

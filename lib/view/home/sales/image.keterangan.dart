@@ -101,10 +101,10 @@ class _ImageKeteranganState extends State<ImageKeterangan> {
                             backgroundColor: const Color(0xFF3F8CE2)),
                         onPressed: () {
                           controller.checklist.value = !controller.checklist.value;
-                          if (controller.checklist.value) {
-                            controller.createAbsen();
-                            print('tes');
-                          }
+                          // if (controller.checklist.value) {
+                          //   controller.createAbsen();
+                          //   print('tes');
+                          // }
                         },
                         child: Obx(() {
                           return AnimatedSwitcher(

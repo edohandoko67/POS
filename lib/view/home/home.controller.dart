@@ -7,19 +7,19 @@ import 'package:get/get.dart' hide MultipartFile;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'package:salesforce/auth/model/login.model.dart';
-import 'package:salesforce/auth/model/toko.dart';
-import 'package:salesforce/auth/service/auth.service.dart';
+// import 'package:salesforce/auth/model/login.model.dart';
+// import 'package:salesforce/auth/model/toko.dart';
+// import 'package:salesforce/auth/service/auth.service.dart';
 import 'package:salesforce/utils/storage.dart';
 import 'package:salesforce/view/home/home.fragment.dart';
 import 'package:salesforce/view/home/sales/image.keterangan.dart';
 
-import '../../auth/model/message.dart';
+// import '../../auth/model/message.dart';
 
 class HomeController extends GetxController {
   GlobalKey<RefreshIndicatorState> refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
   Completer<GoogleMapController> mapController = Completer<GoogleMapController>();
-  AuthService service = AuthService();
+  // AuthService service = AuthService();
   TextEditingController date = TextEditingController();
   TextEditingController search = TextEditingController();
   final Storage storage = Storage();
@@ -130,20 +130,20 @@ class HomeController extends GetxController {
 
   Set<Marker> markers = {};
 
-  void updateMarkers() {
-    markers.clear();
-    for (var toko in listToko) {
-      markers.add(
-        Marker(
-          markerId: MarkerId(toko.nameToko ?? ''),
-          position: LatLng(toko.latitude ?? 0.0, toko.longitude ?? 0.0),
-          infoWindow: InfoWindow(title: toko.nameToko),
-          icon: BitmapDescriptor.defaultMarker,
-        )
-      );
-      print("lat: ${toko.latitude} long: ${toko.longitude}");
-    }
-  }
+  // void updateMarkers() {
+  //   markers.clear();
+  //   for (var toko in listToko) {
+  //     markers.add(
+  //       Marker(
+  //         markerId: MarkerId(toko.nameToko ?? ''),
+  //         position: LatLng(toko.latitude ?? 0.0, toko.longitude ?? 0.0),
+  //         infoWindow: InfoWindow(title: toko.nameToko),
+  //         icon: BitmapDescriptor.defaultMarker,
+  //       )
+  //     );
+  //     print("lat: ${toko.latitude} long: ${toko.longitude}");
+  //   }
+  // }
 
 // Update cameraView
   Future<void> onCameraMove(double latitude, double longitude) async {
@@ -152,20 +152,20 @@ class HomeController extends GetxController {
     controller.animateCamera(CameraUpdate.newLatLng(LatLng(latitude, longitude)));
   }
 
-  Rx<TokoModel> selectedArea = TokoModel().obs;
-
-  void onAreaSelected(TokoModel selectedArea2) {
-    selectedArea.value = selectedArea2;
-    officeLocation.value = LatLng(
-      selectedArea2.latitude ?? 0.0,
-      selectedArea2.longitude ?? 0.0,
-    );
-    print(officeLocation.value.latitude);
-    if (isMapReady.value) {
-      onCameraMove(officeLocation.value.latitude, officeLocation.value.longitude);
-    }
-    _currentLocation(); // Pastikan ini diimplementasikan
-  }
+  // Rx<TokoModel> selectedArea = TokoModel().obs;
+  //
+  // void onAreaSelected(TokoModel selectedArea2) {
+  //   selectedArea.value = selectedArea2;
+  //   officeLocation.value = LatLng(
+  //     selectedArea2.latitude ?? 0.0,
+  //     selectedArea2.longitude ?? 0.0,
+  //   );
+  //   print(officeLocation.value.latitude);
+  //   if (isMapReady.value) {
+  //     onCameraMove(officeLocation.value.latitude, officeLocation.value.longitude);
+  //   }
+  //   _currentLocation(); // Pastikan ini diimplementasikan
+  // }
 
 // If you need to reinitialize when navigating back to the view:
 
@@ -195,22 +195,22 @@ class HomeController extends GetxController {
   }
 
   RxBool isLoadingToko = true.obs;
-  RxList<TokoModel> listToko = <TokoModel>[].obs;
-  Future<void> getDataToko() async {
-    try {
-      isLoadingToko.value = true;
-      listToko.value = await service.listToko({
-        "userId" : storage.getId()
-      });
-      updateMarkers();
-      print("userId toko: ${storage.getId()}");
-    } catch (e, stackTrace) {
-     print("error:  $e");
-     print("stackTrace: $stackTrace");
-    } finally {
-      isLoadingToko.value = false;
-    }
-  }
+  // RxList<TokoModel> listToko = <TokoModel>[].obs;
+  // Future<void> getDataToko() async {
+  //   try {
+  //     isLoadingToko.value = true;
+  //     listToko.value = await service.listToko({
+  //       "userId" : storage.getId()
+  //     });
+  //     updateMarkers();
+  //     print("userId toko: ${storage.getId()}");
+  //   } catch (e, stackTrace) {
+  //    print("error:  $e");
+  //    print("stackTrace: $stackTrace");
+  //   } finally {
+  //     isLoadingToko.value = false;
+  //   }
+  // }
 
   //filter data product static
   void filterProduct(String query) {
@@ -227,30 +227,30 @@ class HomeController extends GetxController {
     isLoading.value = true;
     Future.delayed(const Duration(milliseconds: 500), () {
       isLoading.value = false;
-      getDataToko();
+     // getDataToko();
     });
   }
 
-  void handleNotificationReceived(Map<String, dynamic> data) {
-    String? destination = data['destination'];
-    if (destination != null) {
-      switch (destination) {
-        case 1 :
-          Get.to(HomePageFragment());
-          break;
-      }
-    }
+  // void handleNotificationReceived(Map<String, dynamic> data) {
+  //   String? destination = data['destination'];
+  //   if (destination != null) {
+  //     switch (destination) {
+  //       case 1 :
+  //         Get.to(HomePageFragment());
+  //         break;
+  //     }
+  //   }
+  //
+  //   notificationMessage(); // Or any specific logic you need
+  // }
 
-    notificationMessage(); // Or any specific logic you need
-  }
-
-  RxList<Message> messageList = <Message>[].obs;
-  Future<void> notificationMessage() async {
-    if (isMessageSender.value) {
-      messageList.value = await service.listNotifikasi();
-    }
-
-  }
+  // RxList<Message> messageList = <Message>[].obs;
+  // Future<void> notificationMessage() async {
+  //   if (isMessageSender.value) {
+  //     messageList.value = await service.listNotifikasi();
+  //   }
+  //
+  // }
   final Set<int> _readMessageIds = <int>{}.obs;
   void markMessageAsRead(int id) {
     _readMessageIds.add(id);

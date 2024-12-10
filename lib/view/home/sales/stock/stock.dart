@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../auth/service/api.constant.dart';
+// import '../../../../auth/service/api.constant.dart';
 import '../../../../routes/pages.dart';
 import '../controller/sales.controller.dart';
 
@@ -21,7 +21,7 @@ class StockProduct extends GetView<SalesController> {
           mainAxisSpacing: 1.0,
           childAspectRatio: 0.5, // Rasio aspek untuk item
         ),
-        itemCount: controller.filteredStockProducts.length, // Jumlah item shimmer
+       // itemCount: controller.filteredStockProducts.length, // Jumlah item shimmer
         itemBuilder: (context, index) {
           return Container(
             margin: const EdgeInsets.all(3.0),
@@ -71,116 +71,116 @@ class StockProduct extends GetView<SalesController> {
                       suffix: Icon(Icons.search),
                     ),
                     onChanged: (query) {
-                      controller.searchProducts(query);
+                  //    controller.searchProducts(query);
                     },
                   ),
                 ),
               ),
               const SizedBox(height: 3,),
-              Expanded(
-                child: Obx(() {
-                  if (controller.filteredStockProducts.isEmpty) {
-                    return const Center(child: Text('No product found!'),);
-                  } else if (controller.isLoading.value) {
-                    return shimmerLoading();
-                  } else {
-                    int crossAxisCount = (screenWidth / 150).floor(); // Misalnya, 150 adalah lebar item
-                    return GridView.builder(
-                      shrinkWrap: true,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: crossAxisCount, // Jumlah kolom
-                        crossAxisSpacing: 1.0, // Jarak horizontal antar item
-                        mainAxisSpacing: 1.0, // Jarak vertikal antar item
-                        childAspectRatio: (screenWidth * 0.2) / (screenHeight * 0.1 * 1.2), // Rasio aspek gambar
-                      ),
-                      itemCount: controller.filteredStockProducts.length,
-                      itemBuilder: (context, index) {
-                        final item = controller.filteredStockProducts[index];
-                        return GestureDetector(
-                          onTap: () {
-                            Get.toNamed(Routes.DETAIL_STOCK, arguments: item);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(3.0),
-                            child: Column(
-                              children: [
-                                // Gambar dengan border radius di bagian atas
-                                Container(
-                                  width: double.infinity,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(10.0), // Radius untuk sudut atas
-                                    ),
-                                  ),
-                                  clipBehavior: Clip.hardEdge, // Memastikan gambar terpotong sesuai radius
-                                  child: SizedBox(
-                                    width: screenWidth * 0.4,
-                                    height: screenHeight * 0.2,
-                                    child: Image.network(
-                                      (ApiConstant.baseUrl + item.imageProduct.toString()),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                // Konten bawah dengan border radius di bagian bawah
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 75,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white, // Warna latar belakang
-                                      borderRadius: BorderRadius.vertical(
-                                        bottom: Radius.circular(7.0), // Radius untuk sudut bawah
-                                      ),
-                                      // border: Border.all(
-                                      //   width: 2.0,
-                                      //   color: Colors.grey,
-                                      // ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(7.0),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            item.productName ?? '',
-                                            style: GoogleFonts.poppins(
-                                              fontSize: 17,
-                                              color: Colors.black,
-                                            ),
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          Text(
-                                            'Stock: ${item.jumlahStock}',
-                                            style: GoogleFonts.poppins(
-                                              fontSize: 13,
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                          // Text(
-                                          //   item.price.toString(),
-                                          //   style: GoogleFonts.poppins(
-                                          //     fontSize: 17,
-                                          //     color: Colors.black,
-                                          //   ),
-                                          //   overflow: TextOverflow.ellipsis,
-                                          // ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    );
-                  }
-                })
-              )
+              // Expanded(
+              //   child: Obx(() {
+              //     if (controller.filteredStockProducts.isEmpty) {
+              //       return const Center(child: Text('No product found!'),);
+              //     } else if (controller.isLoading.value) {
+              //       return shimmerLoading();
+              //     } else {
+              //       int crossAxisCount = (screenWidth / 150).floor(); // Misalnya, 150 adalah lebar item
+              //       return GridView.builder(
+              //         shrinkWrap: true,
+              //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              //           crossAxisCount: crossAxisCount, // Jumlah kolom
+              //           crossAxisSpacing: 1.0, // Jarak horizontal antar item
+              //           mainAxisSpacing: 1.0, // Jarak vertikal antar item
+              //           childAspectRatio: (screenWidth * 0.2) / (screenHeight * 0.1 * 1.2), // Rasio aspek gambar
+              //         ),
+              //         itemCount: controller.filteredStockProducts.length,
+              //         itemBuilder: (context, index) {
+              //           final item = controller.filteredStockProducts[index];
+              //           return GestureDetector(
+              //             onTap: () {
+              //               Get.toNamed(Routes.DETAIL_STOCK, arguments: item);
+              //             },
+              //             child: Padding(
+              //               padding: const EdgeInsets.all(3.0),
+              //               child: Column(
+              //                 children: [
+              //                   // Gambar dengan border radius di bagian atas
+              //                   Container(
+              //                     width: double.infinity,
+              //                     decoration: const BoxDecoration(
+              //                       color: Colors.white,
+              //                       borderRadius: BorderRadius.vertical(
+              //                         top: Radius.circular(10.0), // Radius untuk sudut atas
+              //                       ),
+              //                     ),
+              //                     clipBehavior: Clip.hardEdge, // Memastikan gambar terpotong sesuai radius
+              //                     child: SizedBox(
+              //                       width: screenWidth * 0.4,
+              //                       height: screenHeight * 0.2,
+              //                       // child: Image.network(
+              //                       //   (ApiConstant.baseUrl + item.imageProduct.toString()),
+              //                       //   fit: BoxFit.cover,
+              //                       // ),
+              //                     ),
+              //                   ),
+              //                   // Konten bawah dengan border radius di bagian bawah
+              //                   Expanded(
+              //                     flex: 1,
+              //                     child: Container(
+              //                       width: double.infinity,
+              //                       height: 75,
+              //                       decoration: const BoxDecoration(
+              //                         color: Colors.white, // Warna latar belakang
+              //                         borderRadius: BorderRadius.vertical(
+              //                           bottom: Radius.circular(7.0), // Radius untuk sudut bawah
+              //                         ),
+              //                         // border: Border.all(
+              //                         //   width: 2.0,
+              //                         //   color: Colors.grey,
+              //                         // ),
+              //                       ),
+              //                       child: Padding(
+              //                         padding: const EdgeInsets.all(7.0),
+              //                         child: Column(
+              //                           crossAxisAlignment: CrossAxisAlignment.start,
+              //                           children: [
+              //                             Text(
+              //                               item.productName ?? '',
+              //                               style: GoogleFonts.poppins(
+              //                                 fontSize: 17,
+              //                                 color: Colors.black,
+              //                               ),
+              //                               overflow: TextOverflow.ellipsis,
+              //                             ),
+              //                             Text(
+              //                               'Stock: ${item.jumlahStock}',
+              //                               style: GoogleFonts.poppins(
+              //                                 fontSize: 13,
+              //                                 color: Colors.black,
+              //                               ),
+              //                             ),
+              //                             // Text(
+              //                             //   item.price.toString(),
+              //                             //   style: GoogleFonts.poppins(
+              //                             //     fontSize: 17,
+              //                             //     color: Colors.black,
+              //                             //   ),
+              //                             //   overflow: TextOverflow.ellipsis,
+              //                             // ),
+              //                           ],
+              //                         ),
+              //                       ),
+              //                     ),
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //           );
+              //         },
+              //       );
+              //     }
+              //   })
+              // )
             ],
           ),
         ),
