@@ -21,6 +21,7 @@ import 'package:salesforce/utils/storage.dart';
 import 'package:salesforce/view/home/sales/image.keterangan.dart';
 
 import '../../../../model/Product.dart';
+import '../../../../model/SatuanProduct.dart';
 import '../../../../model/StockProduct.dart';
 import '../../../../model/Tracking.dart';
 import '../../../../utils/utils.dart';
@@ -58,10 +59,10 @@ class SalesController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    // listSatuan();
+    listSatuan();
     // fecthAllKurir();
     // fecthDataTracking();
-    // fetchAllProducts();
+    fetchAllProducts();
     // double? latitude = (absenToko.value.latitude ?? 0).toDouble();
     // double? longitude = (absenToko.value.longitude ?? 0).toDouble();
     // officeLocation = LatLng(latitude, longitude).obs;
@@ -179,30 +180,34 @@ class SalesController extends GetxController {
   }
 
   RxList<Product> listBarang = <Product>[].obs;
-  // Future<void> listProductBarang() async {
-  //   try {
-  //     isLoading.value = true;
-  //     listBarang.value = await repository.listProduct();
-  //   } catch (e) {
-  //     print(e);
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  //
-  //   total.value = listBarang.map((item) => item.price ?? 0.0).sum;
-  //   print('Total : ${total.value}');
-  //   print('jumlah : ${listBarang.value.length}');
-  //
-  // }
-  //
-  // RxList<SatuanProduct> listSatuanProduct = <SatuanProduct>[].obs;
-  // Future<void> listSatuan() async {
-  //   listSatuanProduct.value = await service.listSatuan(
-  //     {
-  //       "" : ""
-  //     }
-  //   );
-  // }
+  Future<void> listProductBarang() async {
+    try {
+      isLoading.value = true;
+      listBarang.value = await repository.listProduct();
+    } catch (e) {
+      print(e);
+    } finally {
+      isLoading.value = false;
+    }
+
+    total.value = listBarang.map((item) => item.price ?? 0.0).sum;
+    print('Total : ${total.value}');
+    print('jumlah : ${listBarang.value.length}');
+
+  }
+
+  RxList<SatuanProduct> listSatuanProduct = <SatuanProduct>[].obs;
+  Future<void> listSatuan() async {
+    try {
+      isLoading.value = true;
+      listSatuanProduct.value = await repository.listSatuan();
+    } catch (e) {
+      print(e);
+    } finally {
+      isLoading.value = false;
+    }
+
+  }
   //
   // Rx<Product> productBarang = Product().obs;
   // Future<void> createProductReturn() async {
@@ -225,12 +230,13 @@ class SalesController extends GetxController {
   //   }
   // }
   //
-  // Future<void> deleteProductReturn(int id) async {
-  //   bool result = await service.deleteProductRetur({
-  //     "id_product" : id
-  //   });
-  //   if (result) listProductBarang();
-  // }
+  Future<void> deleteProductReturn(int id) async {
+    Map data = {
+      "id_product": id
+    };
+    bool result = await repository.deleteProductRetur(data);
+    if (result) listProductBarang();
+  }
   //
   //
   // Future<void> createAbsen() async {

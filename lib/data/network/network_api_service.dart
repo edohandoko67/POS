@@ -1,12 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:get_storage/get_storage.dart';
 import 'package:salesforce/data/network/base_api_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:salesforce/utils/storage.dart';
-
 import '../app_exceptions.dart';
 
 class NetworkApiService extends BaseApiService {

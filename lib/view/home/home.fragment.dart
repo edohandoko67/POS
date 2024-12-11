@@ -672,6 +672,7 @@ class HomePageFragment extends GetView<HomeController> {
                                                                 onPressed: () {
                                                                   Get.toNamed(
                                                                       Routes.RETUR);
+                                                                  salesController.listProductBarang();
                                                                 },
                                                                 icon: Image.asset(
                                                                     'assets/icons/return.png'),
@@ -680,6 +681,7 @@ class HomePageFragment extends GetView<HomeController> {
                                                                 onTap: () {
                                                                   Get.toNamed(
                                                                       Routes.RETUR);
+                                                                  salesController.listProductBarang();
                                                                 },
                                                                 child: Text(
                                                                   'Retur',

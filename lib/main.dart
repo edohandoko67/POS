@@ -50,10 +50,8 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      translations: Languages(),
-      fallbackLocale: Locale("en", "US"),
       supportedLocales: const [
-        Locale("ur", "PK")
+        Locale("id", "")
       ],
       theme: ThemeData(
         primarySwatch: Colors.green,

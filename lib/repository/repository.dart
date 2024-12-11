@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:salesforce/data/network/network_api_service.dart';
+import 'package:salesforce/model/SatuanProduct.dart';
 import 'package:salesforce/model/StockProduct.dart';
 import 'package:salesforce/remote/api/api_endpoints.dart';
 import 'package:salesforce/utils/storage.dart';
@@ -21,11 +21,13 @@ class Repository {
     try {
       dynamic response = await networkApiService.postApi(data, ApiEndPoints.login);
       EasyLoading.dismiss();
-      if (response['metaData']['status'] == 'success') {
+      if (response['metaData']['code'] == 200) {
+        _storage.login();
         _storage.saveToken(response['response']['accessToken']);
         _storage.saveRole(response['response']['role']);
         _storage.saveName(response['response']['username']);
         _storage.saveId(response['response']['idUser']);
+        print('accessToken: ${response['response']['accessToken']}');
       } else {
         EasyLoading.dismiss();
         throw Exception("Login failed: ${response['metaData']['message']}");
@@ -63,10 +65,7 @@ class Repository {
   }
 
   Future<List<Product>> listProduct() async {
-    EasyLoading.show(
-        status: '',
-        maskType: EasyLoadingMaskType.black
-    );
+    EasyLoading.show(status: 'Loading...', maskType: EasyLoadingMaskType.black);
     try {
       dynamic response = await networkApiService.getApi(ApiEndPoints.listProduct);
       EasyLoading.dismiss();
@@ -74,14 +73,17 @@ class Repository {
         List<Product> productList = (response['response'] as List)
             .map((item) => Product.fromJson(item))
             .toList();
+        print("Product list loaded: ${productList.length} items.");
         return productList;
       } else {
-        EasyLoading.dismiss();
+        EasyLoading.showError("Failed to load products.");
         return [];
       }
-    } catch (e) {
+    } catch (e, stackTrace) {
       EasyLoading.dismiss();
-      print(e);
+      print("Error: $e");
+      print("StackTrace: $stackTrace");
+      EasyLoading.showError('An error occurred while fetching products.');
       return [];
     }
   }
@@ -130,4 +132,49 @@ class Repository {
       return null;
     }
   }
+
+  Future<dynamic> deleteProductRetur(var data) async {
+    EasyLoading.show(
+      status: '',
+      maskType: EasyLoadingMaskType.black
+    );
+    try {
+      dynamic response = await networkApiService.deletetApi(data, ApiEndPoints.deleteProductRetur);
+      EasyLoading.dismiss();
+      if (response['metaData']['code'] == 200) {
+        return response['response'];
+      } else {
+        return null;
+      }
+    } catch (e) {
+      EasyLoading.dismiss();
+      print('Error: $e');
+      EasyLoading.showError('Error occurred while processing the request');
+      return null;
+    }
+  }
+
+  Future<dynamic> listSatuan() async {
+    EasyLoading.show(
+        status: '',
+        maskType: EasyLoadingMaskType.black
+    );
+    try {
+      dynamic response = await networkApiService.getApi(ApiEndPoints.listSatuanProduct);
+      EasyLoading.dismiss();
+      if (response['metaData']['code'] == 200) {
+        List<SatuanProduct> satuanList = (response['response'] as List)
+            .map((item) => SatuanProduct.fromJson(item))
+            .toList();
+        return satuanList;
+      } else {
+        EasyLoading.dismiss();
+        return [];
+      }
+    } catch (e) {
+      EasyLoading.dismiss();
+      return [];
+    }
+  }
+
 }
