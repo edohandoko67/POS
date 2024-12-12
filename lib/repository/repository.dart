@@ -1,10 +1,12 @@
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:salesforce/data/network/network_api_service.dart';
+import 'package:salesforce/model/ImageDetailStock.dart';
 import 'package:salesforce/model/SatuanProduct.dart';
 import 'package:salesforce/model/StockProduct.dart';
 import 'package:salesforce/remote/api/api_endpoints.dart';
 import 'package:salesforce/utils/storage.dart';
 
+import '../model/Cart.dart';
 import '../model/Product.dart';
 import '../model/TokoModel.dart';
 import '../model/Tracking.dart';
@@ -144,7 +146,7 @@ class Repository {
       if (response['metaData']['code'] == 200) {
         return response['response'];
       } else {
-        return null;
+        return response['metaData']['message'];
       }
     } catch (e) {
       EasyLoading.dismiss();
@@ -174,6 +176,69 @@ class Repository {
     } catch (e) {
       EasyLoading.dismiss();
       return [];
+    }
+  }
+
+  Future<dynamic> createCheckout(var data) async {
+    EasyLoading.show(
+        status: '',
+      maskType: EasyLoadingMaskType.black
+    );
+    try {
+      dynamic response = await networkApiService.postApi(data, ApiEndPoints.createCart);
+      EasyLoading.dismiss();
+      if (response['metaData']['code'] == 200) {
+        return response['response'];
+      } else {
+        return response['metaData']['message'];
+      }
+    } catch (e) {
+      EasyLoading.dismiss();
+      print(e);
+    }
+  }
+
+  Future<dynamic> listImageDetail() async {
+    EasyLoading.show(
+      status: '',
+      maskType: EasyLoadingMaskType.black
+    );
+    try {
+      dynamic response = await networkApiService.getApi(ApiEndPoints.listIdDetailStock);
+      EasyLoading.dismiss();
+      if (response['metaData']['code'] == 200) {
+        List<ImageDetailStock> imageListDetail = (response['response'] as List)
+            .map((item) => ImageDetailStock.fromJson(item))
+            .toList();
+        return imageListDetail;
+      } else {
+        return [];
+      }
+    } catch (e) {
+      EasyLoading.dismiss();
+      print(e);
+    }
+  }
+
+  Future<dynamic> listCartById(var data) async {
+    EasyLoading.show(
+      status: '',
+      maskType: EasyLoadingMaskType.black
+    );
+    try {
+      dynamic response = await networkApiService.postApi(data, ApiEndPoints.findCartById);
+      EasyLoading.dismiss();
+      if (response['metaData']['code'] == 200) {
+        List<Cart> cartList = (response['response'] as List)
+            .map((item) => Cart.fromJson(item))
+            .toList();
+        return cartList;
+      } else {
+        return [];
+      }
+    } catch (e) {
+      EasyLoading.dismiss();
+      print(e);
     }
   }
 

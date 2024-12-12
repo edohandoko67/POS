@@ -20,6 +20,8 @@ import 'package:salesforce/repository/repository.dart';
 import 'package:salesforce/utils/storage.dart';
 import 'package:salesforce/view/home/sales/image.keterangan.dart';
 
+import '../../../../model/Cart.dart';
+import '../../../../model/ImageDetailStock.dart';
 import '../../../../model/Product.dart';
 import '../../../../model/SatuanProduct.dart';
 import '../../../../model/StockProduct.dart';
@@ -108,12 +110,11 @@ class SalesController extends GetxController {
     },
   ];
 
-  // var selectedProduct = Rx<ImageDetailStock?>(null);
-  //
-  // // Method untuk mengubah produk yang dipilih
-  // void selectProduct(ImageDetailStock stock) {
-  //   selectedProduct.value = stock;
-  // }
+   var selectedProduct = Rx<ImageDetailStock?>(null);
+  // Method untuk mengubah produk yang dipilih
+  void selectProduct(ImageDetailStock stock) {
+    selectedProduct.value = stock;
+  }
 
 
   final ImagePicker _picker = ImagePicker();
@@ -192,7 +193,7 @@ class SalesController extends GetxController {
 
     total.value = listBarang.map((item) => item.price ?? 0.0).sum;
     print('Total : ${total.value}');
-    print('jumlah : ${listBarang.value.length}');
+    print('jumlah : ${listBarang.length}');
 
   }
 
@@ -327,17 +328,15 @@ class SalesController extends GetxController {
     }
   }
 
-//
-  // RxList<ImageDetailStock> listDetailStock = <ImageDetailStock>[].obs;
-  // Future<void> fetchDetailImage() async {
-  //   try {
-  //     listDetailStock.value = await service.listImageDetail({
-  //       "" : ""
-  //     });
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
+
+  RxList<ImageDetailStock> listDetailStock = <ImageDetailStock>[].obs;
+  Future<void> fetchDetailImage() async {
+    try {
+      listDetailStock.value = await repository.listImageDetail();
+    } catch (e) {
+      print(e);
+    }
+  }
   //
   // void updateLoginModel(LoginModel model) {
   //   loginModel.value = model;
@@ -345,39 +344,45 @@ class SalesController extends GetxController {
   // }
   //
   // Rx<LoginModel> loginModel = LoginModel().obs;
-  // Future<void> addToCart() async {
-  //   try {
-  //     var idStock = selectedProduct.value?.idImageDetail;
-  //     //var userId = loginModel.value.idUser;
-  //     print("userId: ${storage.getId}");
-  //     // if (userId == 0 || userId == null) {
-  //     //   throw Exception("User ID is not set or invalid.");
-  //     // }
-  //     var result = await service.createCheckout({
-  //       "userId": storage.getId(),
-  //       "id_stock": idStock,
-  //       "quantity": count.value
-  //     });
-  //     if (result) {
-  //       count.value = 0;
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
-  //
-  //
-  // RxList<Cart> cartList = <Cart>[].obs;
-  // Future<void> listCartById() async {
-  //   try {
-  //     cartList.value = await service.listCartById({
-  //       "userId" : storage.getId()
-  //     });
-  //   } catch (e, stackTrace) {
-  //     print("Error: ${e.toString()}");
-  //     print("stackTrace: ${stackTrace.toString()}");
-  //   }
-  // }
+  Future<void> addToCart() async {
+    try {
+      var idStock = selectedProduct.value?.idImageDetail;
+      print("userId: ${storage.getId}");
+      if (count.value <= 0) {
+        print("Quantity should be greater than zero.");
+        return;
+      }
+      var data = {
+        "userId": storage.getId(),
+        "id_stock": idStock,
+        "quantity": count.value
+      };
+      // Using await instead of then
+      bool success = await repository.createCheckout(data);
+      if (success) {
+        count.value = 0; // Reset quantity if the item was added successfully
+        print("Item added to cart successfully.");
+      } else {
+        print("Failed to add item to cart.");
+      }
+    } catch (e) {
+      print("Error adding item to cart: $e");
+    }
+  }
+
+
+  RxList<Cart> cartList = <Cart>[].obs;
+  Future<void> listCartById() async {
+    try {
+      Map data = {
+        "userId" : storage.getId()
+      };
+      cartList.value = await repository.listCartById(data);
+    } catch (e, stackTrace) {
+      print("Error: ${e.toString()}");
+      print("stackTrace: ${stackTrace.toString()}");
+    }
+  }
 
 // void trackingKurir() async {
   //   try {

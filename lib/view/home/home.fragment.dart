@@ -353,7 +353,7 @@ class HomePageFragment extends GetView<HomeController> {
                                   onTap: () {
                                     if (controller.checklist.value) {
                                       salesController.fetchAllProducts();
-                                      // salesController.fetchDetailImage();
+                                      salesController.fetchDetailImage();
                                       Get.toNamed(Routes.STOCK);
                                     } else {
                                       // Get.snackbar(

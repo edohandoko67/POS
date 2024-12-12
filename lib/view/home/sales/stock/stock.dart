@@ -115,7 +115,7 @@ class StockProduct extends GetView<SalesController> {
                                   clipBehavior: Clip.hardEdge, // Memastikan gambar terpotong sesuai radius
                                   child: SizedBox(
                                     width: screenWidth * 0.4,
-                                    height: screenHeight * 0.2,
+                                    height: screenHeight * 0.16,
                                     child: Image.network(
                                       (ApiEndPoints.baseUrl + item.imageProduct.toString()),
                                       fit: BoxFit.cover,
@@ -158,14 +158,14 @@ class StockProduct extends GetView<SalesController> {
                                               color: Colors.black,
                                             ),
                                           ),
-                                          // Text(
-                                          //   item.price.toString(),
-                                          //   style: GoogleFonts.poppins(
-                                          //     fontSize: 17,
-                                          //     color: Colors.black,
-                                          //   ),
-                                          //   overflow: TextOverflow.ellipsis,
-                                          // ),
+                                          Text(
+                                            item.price.toString(),
+                                            style: GoogleFonts.poppins(
+                                              fontSize: 17,
+                                              color: Colors.black,
+                                            ),
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
                                         ],
                                       ),
                                     ),
