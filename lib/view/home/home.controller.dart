@@ -15,6 +15,7 @@ import 'package:salesforce/utils/storage.dart';
 import 'package:salesforce/view/home/home.fragment.dart';
 import 'package:salesforce/view/home/sales/image.keterangan.dart';
 
+import '../../model/Message.dart';
 import '../../model/TokoModel.dart';
 import '../../utils/utils.dart';
 
@@ -237,26 +238,25 @@ class HomeController extends GetxController {
     });
   }
 
-  // void handleNotificationReceived(Map<String, dynamic> data) {
-  //   String? destination = data['destination'];
-  //   if (destination != null) {
-  //     switch (destination) {
-  //       case 1 :
-  //         Get.to(HomePageFragment());
-  //         break;
-  //     }
-  //   }
-  //
-  //   notificationMessage(); // Or any specific logic you need
-  // }
+  void handleNotificationReceived(Map<String, dynamic> data) {
+    String? destination = data['destination'];
+    if (destination != null) {
+      switch (destination) {
+        case 1 :
+          Get.to(HomePageFragment());
+          break;
+      }
+    }
+    notificationMessage(); // Or any specific logic you need
+  }
 
-  // RxList<Message> messageList = <Message>[].obs;
-  // Future<void> notificationMessage() async {
-  //   if (isMessageSender.value) {
-  //     messageList.value = await service.listNotifikasi();
-  //   }
-  //
-  // }
+  RxList<Message> messageList = <Message>[].obs;
+  Future<void> notificationMessage() async {
+    if (isMessageSender.value) {
+      messageList.value = await repository.listNotifikasi();
+    }
+
+  }
   final Set<int> _readMessageIds = <int>{}.obs;
   void markMessageAsRead(int id) {
     _readMessageIds.add(id);

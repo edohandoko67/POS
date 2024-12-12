@@ -1,6 +1,7 @@
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:salesforce/data/network/network_api_service.dart';
 import 'package:salesforce/model/ImageDetailStock.dart';
+import 'package:salesforce/model/Message.dart';
 import 'package:salesforce/model/SatuanProduct.dart';
 import 'package:salesforce/model/StockProduct.dart';
 import 'package:salesforce/remote/api/api_endpoints.dart';
@@ -239,6 +240,29 @@ class Repository {
     } catch (e) {
       EasyLoading.dismiss();
       print(e);
+    }
+  }
+
+  Future<List<Message>> listNotifikasi() async {
+    EasyLoading.show(
+      status: '',
+      maskType: EasyLoadingMaskType.black
+    );
+    try {
+      dynamic response = await networkApiService.getApi(ApiEndPoints.notifikasi);
+      EasyLoading.dismiss();
+      if (response['metaData']['code'] == 200) {
+        List<Message> listMessage = (response['response'] as List)
+            .map((item) => Message.fromJson(item))
+            .toList();
+        return listMessage;
+      } else {
+        return [];
+      }
+    } catch (e) {
+      EasyLoading.dismiss();
+      print(e);
+      return [];
     }
   }
 

@@ -83,7 +83,7 @@ class HomePageFragment extends GetView<HomeController> {
                         ? Icon(Icons.message, color: Colors.red[300],)
                         : const Icon(Icons.message, color: Colors.white,),
                         onPressed: () {
-                         //controller.notificationMessage();
+                          controller.notificationMessage();
                           Get.toNamed(Routes.NOTIFIKASI);
                         },
                       )
